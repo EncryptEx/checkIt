@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\ClientsStatsWeb.csproj": {}
+    "/home/arnaucs/Documents/programacio_arnau/hackathon/2025/uabthehack_2025/uabthehack25/ClientsStatsWeb/ClientsStatsWeb.csproj": {}
   },
   "projects": {
-    "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\ClientsStatsWeb.csproj": {
+    "/home/arnaucs/Documents/programacio_arnau/hackathon/2025/uabthehack_2025/uabthehack25/ClientsStatsWeb/ClientsStatsWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\ClientsStatsWeb.csproj",
+        "projectUniqueName": "/home/arnaucs/Documents/programacio_arnau/hackathon/2025/uabthehack_2025/uabthehack25/ClientsStatsWeb/ClientsStatsWeb.csproj",
         "projectName": "ClientsStatsWeb",
-        "projectPath": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\ClientsStatsWeb.csproj",
-        "packagesPath": "C:\\Users\\miste\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\obj\\",
+        "projectPath": "/home/arnaucs/Documents/programacio_arnau/hackathon/2025/uabthehack_2025/uabthehack25/ClientsStatsWeb/ClientsStatsWeb.csproj",
+        "packagesPath": "/home/arnaucs/.nuget/packages/",
+        "outputPath": "/home/arnaucs/Documents/programacio_arnau/hackathon/2025/uabthehack_2025/uabthehack25/ClientsStatsWeb/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\miste\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/arnaucs/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,17 +32,25 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.200"
+        }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "FirebaseAdmin": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "FirebaseDatabase.net": {
+              "target": "Package",
+              "version": "[4.2.0, )"
+            },
+            "dotenv.net": {
+              "target": "Package",
+              "version": "[3.2.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -68,7 +70,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.114/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,43 +1,39 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ClientsStatsWeb.bundle.scp.css",
-      "PackagePath": "staticwebassets\\ClientsStatsWeb.4yw1pt1dzv.bundle.scp.css"
+      "Id": "/home/arnaucs/Documents/programacio_arnau/hackathon/2025/uabthehack_2025/uabthehack25/ClientsStatsWeb/obj/Debug/net8.0/scopedcss/projectbundle/ClientsStatsWeb.bundle.scp.css",
+      "PackagePath": "staticwebassets/ClientsStatsWeb.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\app.css",
-      "PackagePath": "staticwebassets\\app.css"
+      "Id": "/home/arnaucs/Documents/programacio_arnau/hackathon/2025/uabthehack_2025/uabthehack25/ClientsStatsWeb/wwwroot/app.css",
+      "PackagePath": "staticwebassets/app.css"
     },
     {
-      "Id": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\bootstrap\\bootstrap.min.css",
-      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+      "Id": "/home/arnaucs/Documents/programacio_arnau/hackathon/2025/uabthehack_2025/uabthehack25/ClientsStatsWeb/wwwroot/bootstrap/bootstrap.min.css",
+      "PackagePath": "staticwebassets/bootstrap/bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\bootstrap\\bootstrap.min.css.map",
-      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+      "Id": "/home/arnaucs/Documents/programacio_arnau/hackathon/2025/uabthehack_2025/uabthehack25/ClientsStatsWeb/wwwroot/bootstrap/bootstrap.min.css.map",
+      "PackagePath": "staticwebassets/bootstrap/bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\favicon.png",
-      "PackagePath": "staticwebassets\\favicon.png"
+      "Id": "/home/arnaucs/Documents/programacio_arnau/hackathon/2025/uabthehack_2025/uabthehack25/ClientsStatsWeb/wwwroot/favicon.png",
+      "PackagePath": "staticwebassets/favicon.png"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ClientsStatsWeb.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
-      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
-    },
-    {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ClientsStatsWeb.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.ClientsStatsWeb.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.ClientsStatsWeb.props",
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.ClientsStatsWeb.props",
       "PackagePath": "build\\ClientsStatsWeb.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.ClientsStatsWeb.props",
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.ClientsStatsWeb.props",
       "PackagePath": "buildMultiTargeting\\ClientsStatsWeb.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.ClientsStatsWeb.props",
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.ClientsStatsWeb.props",
       "PackagePath": "buildTransitive\\ClientsStatsWeb.props"
     }
   ],

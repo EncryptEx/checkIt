@@ -9,57 +9,55 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ClientsStatsWeb
 build_property.RootNamespace = ClientsStatsWeb
-build_property.ProjectDir = C:\Users\miste\source\repos\uabthehack25\ClientsStatsWeb\
+build_property.ProjectDir = /home/arnaucs/Documents/programacio_arnau/hackathon/2025/uabthehack_2025/uabthehack25/ClientsStatsWeb/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\miste\source\repos\uabthehack25\ClientsStatsWeb
+build_property.MSBuildProjectDirectory = /home/arnaucs/Documents/programacio_arnau/hackathon/2025/uabthehack_2025/uabthehack25/ClientsStatsWeb
 build_property._RazorSourceGeneratorDebug = 
-build_property.EffectiveAnalysisLevelStyle = 8.0
-build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/miste/source/repos/uabthehack25/ClientsStatsWeb/Components/App.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
+[/home/arnaucs/Documents/programacio_arnau/hackathon/2025/uabthehack_2025/uabthehack25/ClientsStatsWeb/Components/App.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9BcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/miste/source/repos/uabthehack25/ClientsStatsWeb/Components/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
+[/home/arnaucs/Documents/programacio_arnau/hackathon/2025/uabthehack_2025/uabthehack25/ClientsStatsWeb/Components/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Db3VudGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/miste/source/repos/uabthehack25/ClientsStatsWeb/Components/Pages/DashboardHome.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xEYXNoYm9hcmRIb21lLnJhem9y
+[/home/arnaucs/Documents/programacio_arnau/hackathon/2025/uabthehack_2025/uabthehack25/ClientsStatsWeb/Components/Pages/DashboardHome.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9EYXNoYm9hcmRIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/miste/source/repos/uabthehack25/ClientsStatsWeb/Components/Pages/Error.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
+[/home/arnaucs/Documents/programacio_arnau/hackathon/2025/uabthehack_2025/uabthehack25/ClientsStatsWeb/Components/Pages/Error.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9FcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/miste/source/repos/uabthehack25/ClientsStatsWeb/Components/Pages/Home.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
+[/home/arnaucs/Documents/programacio_arnau/hackathon/2025/uabthehack_2025/uabthehack25/ClientsStatsWeb/Components/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Ib21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/miste/source/repos/uabthehack25/ClientsStatsWeb/Components/Pages/Weather.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
+[/home/arnaucs/Documents/programacio_arnau/hackathon/2025/uabthehack_2025/uabthehack25/ClientsStatsWeb/Components/Pages/Weather.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9XZWF0aGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/miste/source/repos/uabthehack25/ClientsStatsWeb/Components/Routes.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
+[/home/arnaucs/Documents/programacio_arnau/hackathon/2025/uabthehack_2025/uabthehack25/ClientsStatsWeb/Components/Routes.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Sb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/miste/source/repos/uabthehack25/ClientsStatsWeb/Components/_Imports.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
+[/home/arnaucs/Documents/programacio_arnau/hackathon/2025/uabthehack_2025/uabthehack25/ClientsStatsWeb/Components/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9fSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/miste/source/repos/uabthehack25/ClientsStatsWeb/Components/Layout/DashboardLayout.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcRGFzaGJvYXJkTGF5b3V0LnJhem9y
-build_metadata.AdditionalFiles.CssScope = b-gvnmfdud3t
+[/home/arnaucs/Documents/programacio_arnau/hackathon/2025/uabthehack_2025/uabthehack25/ClientsStatsWeb/Components/Layout/DashboardLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9MYXlvdXQvRGFzaGJvYXJkTGF5b3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-cmodbmjouu
 
-[C:/Users/miste/source/repos/uabthehack25/ClientsStatsWeb/Components/Layout/DashboardNavMenu.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcRGFzaGJvYXJkTmF2TWVudS5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-yqi5umzfkr
+[/home/arnaucs/Documents/programacio_arnau/hackathon/2025/uabthehack_2025/uabthehack25/ClientsStatsWeb/Components/Layout/DashboardNavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9MYXlvdXQvRGFzaGJvYXJkTmF2TWVudS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-tjl4kz6lrj
 
-[C:/Users/miste/source/repos/uabthehack25/ClientsStatsWeb/Components/Layout/MainLayout.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-mlkypzi48r
+[/home/arnaucs/Documents/programacio_arnau/hackathon/2025/uabthehack_2025/uabthehack25/ClientsStatsWeb/Components/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9MYXlvdXQvTWFpbkxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-lx95ssosdo

@@ -1,18 +1,18 @@
 /* Reset all margins and paddings */
-*[b-mlkypzi48r] {
+*[b-lx95ssosdo] {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body[b-mlkypzi48r], html[b-mlkypzi48r] {
+body[b-lx95ssosdo], html[b-lx95ssosdo] {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
 }
 
-.page[b-mlkypzi48r] {
+.page[b-lx95ssosdo] {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -21,7 +21,7 @@ body[b-mlkypzi48r], html[b-mlkypzi48r] {
 }
 
 /* Top navigation bar */
-.top-nav[b-mlkypzi48r] {
+.top-nav[b-lx95ssosdo] {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -31,23 +31,23 @@ body[b-mlkypzi48r], html[b-mlkypzi48r] {
     width: 100%;
 }
 
-.nav-links[b-mlkypzi48r] {
+.nav-links[b-lx95ssosdo] {
     display: flex;
     gap: 1.5rem;
 }
 
-.nav-link[b-mlkypzi48r] {
+.nav-link[b-lx95ssosdo] {
     color: white;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.2s;
 }
 
-    .nav-link:hover[b-mlkypzi48r] {
+    .nav-link:hover[b-lx95ssosdo] {
         color: #2575fc;
     }
 
-.login-button[b-mlkypzi48r] {
+.login-button[b-lx95ssosdo] {
     background-color: #2575fc;
     color: white;
     padding: 0.5rem 1.2rem;
@@ -57,22 +57,22 @@ body[b-mlkypzi48r], html[b-mlkypzi48r] {
     transition: background-color 0.2s;
 }
 
-    .login-button:hover[b-mlkypzi48r] {
+    .login-button:hover[b-lx95ssosdo] {
         background-color: #1a5fc7;
     }
 
-main[b-mlkypzi48r] {
+main[b-lx95ssosdo] {
     display: flex;
     flex-direction: column;
 }
 
-.content[b-mlkypzi48r] {
+.content[b-lx95ssosdo] {
     display: flex;
     flex-direction: column;
 }
 
 /* Error UI */
-#blazor-error-ui[b-mlkypzi48r] {
+#blazor-error-ui[b-lx95ssosdo] {
     background: lightyellow;
     bottom: 0;
     box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
@@ -84,7 +84,7 @@ main[b-mlkypzi48r] {
     z-index: 1000;
 }
 
-    #blazor-error-ui .dismiss[b-mlkypzi48r] {
+    #blazor-error-ui .dismiss[b-lx95ssosdo] {
         cursor: pointer;
         position: absolute;
         right: 0.75rem;
@@ -92,7 +92,7 @@ main[b-mlkypzi48r] {
     }
 
 /* Make sure home container extends properly */
-.home-container[b-mlkypzi48r] {
+.home-container[b-lx95ssosdo] {
     display: flex;
     flex-direction: column;
     align-items: center;
