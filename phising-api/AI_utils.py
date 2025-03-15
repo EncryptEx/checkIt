@@ -3,6 +3,9 @@ from bs4 import BeautifulSoup
 import json
 import os
 
+from dotenv import load_dotenv
+load_dotenv()
+
 client = AzureOpenAI(
     api_version="2024-12-01-preview",
     api_key=os.environ['OPENAI_AZURE_API_KEY'],
@@ -29,11 +32,13 @@ def extract_payment_methods(html_content, user_payment_methods):
     text_content = soup.get_text(separator=' ')
 
     prompt = (
-        "Identify which payment methods appear in the given text: "
+        "Identify which payment methods appear in the given text, identify just the banks or entities not the payment method:"
         f"Text:\n{text_content}\n\n"
-        "Return a JSON with two lists: 'available' for all found methods, and 'user_has' for those that match the following list."
+        "Return a JSON with two lists and one element: 'available' for all found methods, and 'user_has' for those that match the following list"
         f"{', '.join(user_payment_methods)}. \n\n"
+        "the element is the full name and reference of the product that the client is trying to buy"
     )
+
 
 
     completion = client.chat.completions.create(
