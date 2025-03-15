@@ -1,0 +1,26 @@
+{
+    "-OLQF7jVAPg_m-iscyEV": {
+        "Name": "Maximiliano Cortez Reséndez",
+        "payment_methods": ["PayPal", "Google Pay", "Credit Card"]
+    },
+    "-OLQG8jVAPg_m-iscxYZ": {
+        "Name": "Javier Escalante Villagómez",
+        "payment_methods": ["PayPal"]
+    },
+    "-OLQH9jVAPg_m-isczAB": {
+        "Name": "Joana Nascimento",
+        "payment_methods": ["Apple Pay", "PayPal", "Bitcoin"]
+    },
+    "-OLQI0jVAPg_m-isczCD": {
+        "Name": "Vitor Gabriel Pires",
+        "payment_methods": ["Google Pay"]
+    },
+    "-OLQJ1jVAPg_m-isczEF": {
+        "Name": "Luiz Miguel Souza",
+        "payment_methods": ["Google Pay", "PayPal", "Credit Card"]
+    },
+    "-OLQJ1jVBTg_m-isczEZ": {
+        "Name": "Arnau Pablo Salvador",
+        "payment_methods": ["Google Pay", "Banco Peru"]
+    }
+}
