@@ -20,8 +20,8 @@
 
         try
         {
-            // Read JSON file (Ensure it's in "wwwroot/data/users1.json")
-            string filePath = Path.Combine("wwwroot", "data", "users1.json");
+            // Read JSON file (Ensure it's in "wwwroot/data/users1.json")    // Change the number to put the data needed
+            string filePath = Path.Combine("wwwroot", "data", "users3.json");
             string jsonData = await File.ReadAllTextAsync(filePath);
 
             // Deserialize JSON into Dictionary
