@@ -1,14 +1,16 @@
 import os
-from typing import Union
+
 import base64
 from fastapi import FastAPI
+
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from pysafebrowsing import SafeBrowsing
 
 from googlesearch import search
 import tldextract
-
+from bs4 import BeautifulSoup
+from AI_utils import extract_payment_methods
 
 
 # Customize the title of the Swagger documentation
@@ -16,6 +18,7 @@ app = FastAPI(title="Phishing URL Checker API")
 
 # load dotenv
 from dotenv import load_dotenv
+import asyncio
 load_dotenv()
 
 # create a SafeBrowsing object
@@ -57,25 +60,13 @@ async def get_domain(bank_name):
     return {'domain': bank_name + ".com"}
 
 
-
-
-#region OpenAI azure
-
-client = AzureOpenAI(
-    api_version="2024-12-01-preview",
-    api_key=os.environ['OPENAI_AZURE_API_KEY'],
-    azure_endpoint=os.environ['OPENAI_AZURE_ENDPOINT'],
-)
-
-
-# new endpoint to get if a page is a checkout page or not based on the html contents
-
 class CheckoutPageRequest(BaseModel):
     html_content: str
     url: str
+    user_payment_methods: list[str]
     
-@app.post("/is_checkout_page/")
-async def is_checkout_page(request: CheckoutPageRequest):
+@app.post("/scan_page/")
+async def scan_page(request: CheckoutPageRequest):
     """
     Check if a page is a checkout page or not based on the HTML content.
 
@@ -101,63 +92,11 @@ async def is_checkout_page(request: CheckoutPageRequest):
                 
     is_checkout_page = any(keyword in text_content for keyword in keywords)
     
+    
+    
     # send async to extract payment methods of website
-    return {"is_checkout_page": is_checkout_page}
-
-class PaymentMethodsRequest(BaseModel):
-    html_content: str
-    payment_methods_list: List[str]
-
-@app.post("/extract_payment_methods/")
-async def extract_payment_methods(request: PaymentMethodsRequest):
-    """
-    Extract payment methods from HTML.
-
-    **Input:**
-    - html_content (str): HTML text.
-    - payment_methods_list (List[str]): Payment methods to look for.
-
-    **Returns:**
-    A JSON with:
-    - available: All found methods in the text.
-    - user_has: Methods from payment_methods_list present in the text.
-    """
     
-    html_content = request.html_content
-    payment_methods_list = request.payment_methods_list
-
-    soup = BeautifulSoup(html_content, "html.parser")
-    text_content = soup.get_text(separator=' ')
-
-    prompt = (
-        "Identify which payment methods appear in the given text: "
-        f"Text:\n{text_content}\n\n"
-        "Return a JSON with two lists: 'available' for all found methods, and 'user_has' for those that match the following list."
-        f"{', '.join(payment_methods_list)}. \n\n"
-    )
-
-
-    completion = client.chat.completions.create(
-        model="GPT-4o-mini" ,
-        temperature=0.2,
-        messages=[
-            {
-                "role": "system",
-                "content": prompt,
-            },
-        ],
-    )
-    jsn = completion.to_json()
-    data = json.loads(jsn)
-    message_content = data["choices"][0]["message"]["content"]
+    response = extract_payment_methods(html_content, request.user_payment_methods)
     
-    if message_content.startswith("```json"):
-        message_content = message_content[len("```json"):].strip()
-    if message_content.endswith("```"):
-        message_content = message_content[:-3].strip()
-
-    message_dict = json.loads(message_content)
-    return message_dict
-
-
-#endregion
+    # response = request.user_payment_methods
+    return {"is_checkout_page": is_checkout_page, "payment_methods": response}

@@ -3,6 +3,11 @@ from bs4 import BeautifulSoup
 import json
 import os
 
+
+# load dotenv
+from dotenv import load_dotenv
+load_dotenv()
+
 client = AzureOpenAI(
     api_version="2024-12-01-preview",
     api_key=os.environ['OPENAI_AZURE_API_KEY'],
