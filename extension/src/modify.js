@@ -28,6 +28,21 @@ isPhishing(url).then(isPhishing => {
 		popup.style.boxShadow = "0px 0px 10px rgba(0, 0, 0, 0.5)";
 		popup.style.borderRadius = "5px";
 		popup.innerHTML = "This website is safe";
+
+		var closeButton = document.createElement("button");
+		closeButton.innerHTML = "X";
+		closeButton.style.marginLeft = "10px";
+		closeButton.style.backgroundColor = "#4CAF50";
+		closeButton.style.borderRadius = "5px";
+		closeButton.style.color = "white";
+		closeButton.style.border = "none";
+		closeButton.style.padding = "5px";
+		closeButton.style.cursor = "pointer";
+		closeButton.onclick = function() {
+			popup.style.display = "none";
+		};
+
+		popup.appendChild(closeButton);
 		document.body.appendChild(popup);
 
 		// insert a popup left corner of the website
