@@ -1,6 +1,6 @@
 import os
 from typing import Union
-
+import base64
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -70,12 +70,49 @@ client = AzureOpenAI(
     azure_endpoint=os.environ['OPENAI_AZURE_ENDPOINT'],
 )
 
+
+# new endpoint to get if a page is a checkout page or not based on the html contents
+
+class CheckoutPageRequest(BaseModel):
+    html_content: str
+    url: str
+    
+@app.post("/is_checkout_page/")
+async def is_checkout_page(request: CheckoutPageRequest):
+    """
+    Check if a page is a checkout page or not based on the HTML content.
+
+    **Input:**
+    - html_content (str): HTML text.
+
+    **Returns:**
+    A JSON with:
+    - is_checkout_page: True if the page is a checkout page, False otherwise.
+    """
+    
+    # use keywords instead of openai
+    
+    html_content = base64.b64decode(request.html_content).decode('utf-8')
+    soup = BeautifulSoup(html_content, "html.parser")
+    text_content = soup.get_text(separator=' ')
+    
+    keywords = ["checkout", "payment", "credit card", "shipping", "billing", "order summary", "place order", "complete order", 
+                "pago", "tarjeta de crédito", "envío", "facturación", "resumen del pedido", "realizar pedido", "completar pedido",
+                "pagamento", "cartão de crédito", "envio", "faturamento", "resumo do pedido", "fazer pedido", "completar pedido",
+                "paiement", "carte de crédit", "expédition", "facturation", "résumé de la commande", "passer commande", "compléter la commande",
+                "pagamento", "cartão de crédito", "expedição", "faturamento", "resumo do pedido", "fazer pedido", "completar pedido"]
+                
+    is_checkout_page = any(keyword in text_content for keyword in keywords)
+    
+    # send async to extract payment methods of website
+    return {"is_checkout_page": is_checkout_page}
+
 class PaymentMethodsRequest(BaseModel):
     html_content: str
     payment_methods_list: List[str]
 
 @app.post("/extract_payment_methods/")
-def extract_payment_methods(request: PaymentMethodsRequest):
+async def extract_payment_methods(request: PaymentMethodsRequest):
     """
     Extract payment methods from HTML.
 

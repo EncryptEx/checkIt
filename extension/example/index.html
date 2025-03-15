@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="container mx-auto p-4">
+        <h1 class="text-2xl font-bold mb-4">Checkout Page</h1>
+        <p class="mb-2">Thank you for shopping with us!</p>
+        <p class="mb-2">Choose your payment method:</p>
+        <select name="paymentMethod" id="paymentMethod" class="mb-4 p-2 border border-gray-300 rounded">
+            <option value="creditCard">Credit Card - ONLY mastercard</option>
+            <option value="bankTransfer">Bank Transfer - Central Bank of America</option>
+            <option value="paypal">Paypal</option>
+            <option value="bitcoin">Bitcoin</option>
+        </select>
+        <button id="checkoutButton" class="bg-blue-500 text-white p-2 rounded">Checkout</button>
+    </div>
+</body>
+</html>

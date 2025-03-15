@@ -22,7 +22,8 @@
         {
             "matches": ["<all_urls>"],
             "js": [
-                "modify.js"
+                "modify.js",
+                "scanPaymentMethods.js"
             ]
         }
     ],
