@@ -9,7 +9,66 @@ var url = window.location.href;
 // if it is, modify the website to show a warning
 isPhishing(url).then(isPhishing => {
 	if (isPhishing) {
-		alert("This website is part of a phishing attack");
+		var popup = document.createElement("div");
+		popup.style.position = "fixed";
+		popup.style.top = "0";
+		popup.style.left = "0";
+		popup.style.width = "100%";
+		popup.style.height = "100%";
+		popup.style.backgroundColor = "rgba(214, 40, 40, 0.8)";
+		popup.style.color = "white";
+		popup.style.padding = "20px";
+		popup.style.display = "flex";
+		popup.style.justifyContent = "center";
+		popup.style.alignItems = "center";
+		// popup.style.fontSize = "30px";
+		// popup.style.fontWeight = "bold";
+		popup.style.zIndex = "9999";
+		
+		var textContainer = document.createElement("div");
+		// background-color: rgb(155, 30, 30); padding: 50px; border-radius: 5px;'>
+
+		textContainer.style.backgroundColor = "rgb(155, 30, 30)";
+		textContainer.style.padding = "50px";
+		textContainer.style.borderRadius = "5px";
+		
+		popup.appendChild(textContainer);
+
+		var text = document.createElement("div");
+		text.innerHTML = `
+		<div class='background-color: rgb(155, 30, 30) !important; padding: 50px !important; border-radius: 5px !important; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji" !important;'>
+		<h1 style='color: white !important; font-size: 30px !important; font-weight: bold !important;'>
+			This is a Phishing Website!!!
+		</h1>
+		<br>
+		<div>
+		<p style='color: white !important;'>Phishing attacks are a common way for hackers to steal your personal information.</p>
+		<p style='color: white !important;'>We have checked this website and it is safe to use.</p>
+		<br>
+		<p style='color: white !important;'>Remember to always be cautious when entering personal information online.</p>
+		<p style='color: white !important;'>Stay safe!</p>
+		<br><br>
+		<p style='color: white !important;'>If you are really sure that this website is NOT a phishing website, please click the button below to continue.</p>
+		<br><br>
+		</div>
+	`;
+
+		textContainer.appendChild(text);
+
+		var continueButton = document.createElement("button");
+		continueButton.innerHTML = "Accept Risk and Continue";
+		continueButton.style.backgroundColor = "#4CAF50";
+		continueButton.style.borderRadius = "5px";
+		continueButton.style.color = "white";
+		continueButton.style.border = "none";
+		continueButton.style.padding = "10px";
+		continueButton.style.cursor = "pointer";
+		continueButton.onclick = function() {
+			popup.style.display = "none";
+		};
+
+		textContainer.appendChild(continueButton);
+		document.body.appendChild(popup);
 	} else {
 		// insert a popup right corner of the website
 		// green and says: "This website is safe"
@@ -27,36 +86,25 @@ isPhishing(url).then(isPhishing => {
 		popup.style.zIndex = "9999";
 		popup.style.boxShadow = "0px 0px 10px rgba(0, 0, 0, 0.5)";
 		popup.style.borderRadius = "5px";
-		popup.innerHTML = "This website is safe";
-
+		popup.innerHTML = "This website is safe"; 
+		
 		var closeButton = document.createElement("button");
 		closeButton.innerHTML = "X";
-		closeButton.style.marginLeft = "10px";
-		closeButton.style.backgroundColor = "#4CAF50";
+		closeButton.style.position = "absolute";
+		closeButton.style.top = "10px";
+		closeButton.style.right = "10px";
+		closeButton.style.backgroundColor = "#f44336";
 		closeButton.style.borderRadius = "5px";
 		closeButton.style.color = "white";
 		closeButton.style.border = "none";
-		closeButton.style.padding = "5px";
+		closeButton.style.padding = "10px";
 		closeButton.style.cursor = "pointer";
 		closeButton.onclick = function() {
 			popup.style.display = "none";
 		};
-
+		
 		popup.appendChild(closeButton);
 		document.body.appendChild(popup);
-
-		// insert a popup left corner of the website
-		// red and says: "This website is not safe"
-		// var popup = document.createElement("div");
-		// popup.style.position = "fixed";
-		// popup.style.top = "0";
-		// popup.style.left = "0";
-		// popup.style.backgroundColor = "red";
-		// popup.style.color = "white";
-		// popup.style.padding = "10px";
-		// popup.style.zIndex = "1000";
-		// popup.innerHTML = "This website is not safe";
-		// document.body.appendChild(popup);
 	}
 });
 
