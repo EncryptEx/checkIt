@@ -6,6 +6,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from pysafebrowsing import SafeBrowsing
 
+from googlesearch import search
+import tldextract
+
 # Customize the title of the Swagger documentation
 app = FastAPI(title="Phishing URL Checker API")
 
@@ -34,3 +37,16 @@ async def check_url(request: URLRequest):
     result = sb.lookup_url(request.url)
     return result
 
+
+
+@app.get('/get_domain/{bank_name}')
+async def get_domain(bank_name):
+    query = bank_name + " web"
+
+
+    for url in search(query, num_results=10):
+        ext = tldextract.extract(url)
+        domain = f"{ext.domain}.{ext.suffix}"
+        print("Domain found:", domain)
+        if len(domain) > 5:
+            return domain
