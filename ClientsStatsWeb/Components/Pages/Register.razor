@@ -1,0 +1,120 @@
+﻿@page "/register"
+@rendermode InteractiveServer
+@inject FirebaseAuthService AuthService
+@inject NavigationManager Navigation
+
+
+<div class="register-container">
+    <h2>Create Your Account</h2>
+
+    <div class="form-group">
+        <label>Email</label>
+        <input type="email" @bind="Email" required />
+    </div>
+
+    <div class="form-group">
+        <label>Password</label>
+        <input type="password" @bind="Password" required />
+    </div>
+
+    <div class="form-group">
+        <label>Confirm Password</label>
+        <input type="password" @bind="ConfirmPassword" required />
+    </div>
+
+    <button @onclick="RegisterUser" class="register-button" disabled="@IsLoading">
+        @(IsLoading ? "Registering..." : "Register")
+    </button>
+
+    @if (!string.IsNullOrEmpty(Message))
+    {
+        <p class="message">@Message</p>
+    }
+</div>
+
+@code {
+    private string Email { get; set; } = "";
+    private string Password { get; set; } = "";
+    private string ConfirmPassword { get; set; } = "";
+    private string Message = "";
+    private bool IsLoading = false;
+
+    private async Task RegisterUser()
+    {
+        if (Password != ConfirmPassword)
+        {
+            Message = "Passwords do not match!";
+            return;
+        }
+
+        IsLoading = true;
+        Message = "";
+
+        try
+        {
+            var result = await AuthService.RegisterUser(Email, Password);
+            if (!result.StartsWith("Error"))
+            {
+                Message = "Registration successful! Redirecting...";
+                await Task.Delay(2000);
+                Navigation.NavigateTo("/login");
+            }
+            else
+            {
+                Message = result; // Show error message
+            }
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+}
+
+<style>
+    .register-container {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background: #f4f4f4;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+        text-align: left;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .register-button {
+        width: 100%;
+        padding: 10px;
+        background: #007bff;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+    }
+
+        .register-button:hover {
+            background: #0056b3;
+        }
+
+    .message {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+</style>
