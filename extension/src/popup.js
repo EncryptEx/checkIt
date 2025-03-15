@@ -1,4 +1,4 @@
-function getToken() {
+/*function getToken() {
 	return chrome.storage.sync.get("token");
 }
 function saveToken(token) { }
@@ -28,4 +28,7 @@ document.addEventListener(
 		});
 	},
 	false
-);
+); */
+
+// create tab
+chrome.tabs.create({ url: "https://jaumelopez.dev" });

@@ -42,6 +42,7 @@ async def check_url(request: URLRequest):
 @app.get('/get_domain/{bank_name}')
 async def get_domain(bank_name):
     query = bank_name + " web"
+    query = "banco " + query if "banc" not in query or "bank" not in query else query
 
 
     for url in search(query, num_results=10):
@@ -49,4 +50,6 @@ async def get_domain(bank_name):
         domain = f"{ext.domain}.{ext.suffix}"
         print("Domain found:", domain)
         if len(domain) > 5:
-            return domain
+            return {'domain': domain}
+        
+    return {'domain': bank_name + ".com"}
