@@ -1,0 +1,51 @@
+@page "/database-test"
+@using Newtonsoft.Json
+@rendermode InteractiveServer
+@inject Firebase.Database.FirebaseClient FirebaseClient
+
+<h3>Send Data to Firebase</h3>
+
+<input @bind="userName" placeholder="Enter name..." />
+<button @onclick="SendData">Submit</button>
+
+<p>@message</p>
+
+@code {
+    private string userName = "";
+    private string message = "";
+
+    private async Task SendData()
+    {
+        Console.WriteLine("Sending data...");
+
+        if (string.IsNullOrWhiteSpace(userName))
+        {
+            message = "Please enter a name.";
+            StateHasChanged();
+            return;
+        }
+
+        var userData = new User { Name = userName }; // Use a proper class
+
+        var result = await FirebaseClient
+            .Child("users")
+            .PostAsync(JsonConvert.SerializeObject(userData)); // Serialize object to JSON
+
+        if (result != null)
+        {
+            message = "Data successfully sent!";
+        }
+        else
+        {
+            message = "Failed to send data.";
+        }
+
+        StateHasChanged(); // Ensure UI updates
+    }
+
+    // Define the User class
+    private class User
+    {
+        public string Name { get; set; }
+    }
+}

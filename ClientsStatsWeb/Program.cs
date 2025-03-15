@@ -20,14 +20,18 @@ if (string.IsNullOrEmpty(firebaseCredentialsPath) || string.IsNullOrEmpty(fireba
     throw new InvalidOperationException("Firebase environment variables are not set properly.");
 }
 
-// Initialize Firebase Admin SDK
-FirebaseApp.Create(new AppOptions()
+if (FirebaseApp.DefaultInstance == null)
 {
-    Credential = GoogleCredential.FromFile(firebaseCredentialsPath),
-});
+    FirebaseApp.Create(new AppOptions()
+    {
+        Credential = GoogleCredential.FromFile(firebaseCredentialsPath),
+    });
+}
 
 // Register Firebase Realtime Database client as a singleton service
-builder.Services.AddSingleton(new FirebaseClient(firebaseDatabaseUrl));
+builder.Services.AddSingleton(provider => new FirebaseClient(firebaseDatabaseUrl));
+
+
 
 
 // Add services to the container.
@@ -47,5 +51,7 @@ app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
+
+
 
 app.Run();

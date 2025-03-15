@@ -1,0 +1,33 @@
+@page "/test-get"
+@inject Firebase.Database.FirebaseClient FirebaseClient
+@rendermode InteractiveServer
+
+<h3>Users from Firebase</h3>
+
+<button @onclick="GetUsers">Load Users</button>
+
+<ul>
+    @foreach (var user in users)
+    {
+        <li>@user.Name</li>
+    }
+</ul>
+
+@code {
+    private List<User> users = new();
+
+    private async Task GetUsers()
+    {
+        var firebaseData = await FirebaseClient
+            .Child("users") // Fetch "users" node from Firebase
+            .OnceAsync<User>();
+
+        users = firebaseData.Select(u => new User { Name = u.Object.Name }).ToList();
+        StateHasChanged(); // Update UI
+    }
+
+    private class User
+    {
+        public string Name { get; set; }
+    }
+}
