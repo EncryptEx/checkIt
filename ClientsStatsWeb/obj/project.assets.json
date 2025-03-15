@@ -8,19 +8,24 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\miste\\.nuget\\packages\\": {}
+    "C:\\Users\\miste\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\miste\\Source\\Repos\\uabthehack25\\ClientsStatsWeb\\ClientsStatsWeb.csproj",
+      "projectUniqueName": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\ClientsStatsWeb.csproj",
       "projectName": "ClientsStatsWeb",
-      "projectPath": "C:\\Users\\miste\\Source\\Repos\\uabthehack25\\ClientsStatsWeb\\ClientsStatsWeb.csproj",
+      "projectPath": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\ClientsStatsWeb.csproj",
       "packagesPath": "C:\\Users\\miste\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\miste\\Source\\Repos\\uabthehack25\\ClientsStatsWeb\\obj\\",
+      "outputPath": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
         "C:\\Users\\miste\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -45,7 +50,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net8.0": {
@@ -69,7 +75,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

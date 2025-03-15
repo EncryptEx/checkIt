@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0Wnz9E6dLTsjg/RsOvdFxqsdLUbS6mf0GWyiD6bfCp8=",
+  "Hash": "IhIp1CwsktijyBg/lRp6bY0G7zqBwgDPLfaiHyJLEu8=",
   "Source": "ClientsStatsWeb",
   "BasePath": "_content/ClientsStatsWeb",
   "Mode": "Default",
@@ -10,19 +10,19 @@
     {
       "Name": "ClientsStatsWeb\\wwwroot",
       "Source": "ClientsStatsWeb",
-      "ContentRoot": "C:\\Users\\miste\\Source\\Repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\",
       "BasePath": "_content/ClientsStatsWeb",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\miste\\Source\\Repos\\uabthehack25\\ClientsStatsWeb\\obj\\Debug\\net8.0\\scopedcss\\bundle\\ClientsStatsWeb.styles.css",
+      "Identity": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\obj\\Debug\\net8.0\\scopedcss\\bundle\\ClientsStatsWeb.styles.css",
       "SourceId": "ClientsStatsWeb",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\miste\\Source\\Repos\\uabthehack25\\ClientsStatsWeb\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/ClientsStatsWeb",
-      "RelativePath": "ClientsStatsWeb.styles.css",
+      "RelativePath": "ClientsStatsWeb#[.{fingerprint}]?.styles.css",
       "AssetKind": "All",
       "AssetMode": "CurrentProject",
       "AssetRole": "Primary",
@@ -31,17 +31,19 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ApplicationBundle",
+      "Fingerprint": "4yw1pt1dzv",
+      "Integrity": "DPq9RWDtze8e7h2/senWPqYBPLpa/XTbqeFLcmWdzfE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\miste\\Source\\Repos\\uabthehack25\\ClientsStatsWeb\\obj\\Debug\\net8.0\\scopedcss\\bundle\\ClientsStatsWeb.styles.css"
+      "OriginalItemSpec": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\obj\\Debug\\net8.0\\scopedcss\\bundle\\ClientsStatsWeb.styles.css"
     },
     {
-      "Identity": "C:\\Users\\miste\\Source\\Repos\\uabthehack25\\ClientsStatsWeb\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ClientsStatsWeb.bundle.scp.css",
+      "Identity": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ClientsStatsWeb.bundle.scp.css",
       "SourceId": "ClientsStatsWeb",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\miste\\Source\\Repos\\uabthehack25\\ClientsStatsWeb\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/ClientsStatsWeb",
-      "RelativePath": "ClientsStatsWeb.bundle.scp.css",
+      "RelativePath": "ClientsStatsWeb#[.{fingerprint}]!.bundle.scp.css",
       "AssetKind": "All",
       "AssetMode": "Reference",
       "AssetRole": "Primary",
@@ -50,85 +52,589 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ProjectBundle",
+      "Fingerprint": "4yw1pt1dzv",
+      "Integrity": "DPq9RWDtze8e7h2/senWPqYBPLpa/XTbqeFLcmWdzfE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\miste\\Source\\Repos\\uabthehack25\\ClientsStatsWeb\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ClientsStatsWeb.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ClientsStatsWeb.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\miste\\Source\\Repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\app.css",
+      "Identity": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\app.css",
       "SourceId": "ClientsStatsWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\miste\\Source\\Repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\",
       "BasePath": "_content/ClientsStatsWeb",
-      "RelativePath": "app.css",
+      "RelativePath": "app#[.{fingerprint}]?.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "da95v2qkru",
+      "Integrity": "u9qEka1auR7E3rd3/8/j8hkQdSOYj9bRJ4nYiFDR1sE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\app.css"
     },
     {
-      "Identity": "C:\\Users\\miste\\Source\\Repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "Identity": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\bootstrap\\bootstrap.min.css",
       "SourceId": "ClientsStatsWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\miste\\Source\\Repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\",
       "BasePath": "_content/ClientsStatsWeb",
-      "RelativePath": "bootstrap/bootstrap.min.css",
+      "RelativePath": "bootstrap/bootstrap.min#[.{fingerprint}]?.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "bpk8xqwxhs",
+      "Integrity": "z8OR40MowJ8GgK6P89Y+hiJK5+cclzFHzLhFQLL92bg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\miste\\Source\\Repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "ClientsStatsWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\miste\\Source\\Repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\",
       "BasePath": "_content/ClientsStatsWeb",
-      "RelativePath": "bootstrap/bootstrap.min.css.map",
+      "RelativePath": "bootstrap/bootstrap.min.css#[.{fingerprint}]?.map",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "8inm30yfxf",
+      "Integrity": "gBwg2tmA0Ci2u54gMF1jNCVku6vznarkLS6D76htNNQ=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\miste\\Source\\Repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\favicon.png",
+      "Identity": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\favicon.png",
       "SourceId": "ClientsStatsWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\miste\\Source\\Repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\",
       "BasePath": "_content/ClientsStatsWeb",
-      "RelativePath": "favicon.png",
+      "RelativePath": "favicon#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "ifv42okdf2",
+      "Integrity": "4mWsDy3aHl36ZbGt8zByK7Pvd4kRUoNgTYzRnwmPHwg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.png"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "app.css",
+      "AssetFile": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\app.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2591"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"u9qEka1auR7E3rd3/8/j8hkQdSOYj9bRJ4nYiFDR1sE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 15 Mar 2025 12:58:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-u9qEka1auR7E3rd3/8/j8hkQdSOYj9bRJ4nYiFDR1sE="
+        }
+      ]
+    },
+    {
+      "Route": "app.da95v2qkru.css",
+      "AssetFile": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\app.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2591"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"u9qEka1auR7E3rd3/8/j8hkQdSOYj9bRJ4nYiFDR1sE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 15 Mar 2025 12:58:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "da95v2qkru"
+        },
+        {
+          "Name": "label",
+          "Value": "app.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-u9qEka1auR7E3rd3/8/j8hkQdSOYj9bRJ4nYiFDR1sE="
+        }
+      ]
+    },
+    {
+      "Route": "bootstrap/bootstrap.min.bpk8xqwxhs.css",
+      "AssetFile": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "162720"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"z8OR40MowJ8GgK6P89Y+hiJK5+cclzFHzLhFQLL92bg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 15 Mar 2025 12:58:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "bpk8xqwxhs"
+        },
+        {
+          "Name": "label",
+          "Value": "bootstrap/bootstrap.min.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-z8OR40MowJ8GgK6P89Y+hiJK5+cclzFHzLhFQLL92bg="
+        }
+      ]
+    },
+    {
+      "Route": "bootstrap/bootstrap.min.css",
+      "AssetFile": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "162720"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"z8OR40MowJ8GgK6P89Y+hiJK5+cclzFHzLhFQLL92bg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 15 Mar 2025 12:58:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-z8OR40MowJ8GgK6P89Y+hiJK5+cclzFHzLhFQLL92bg="
+        }
+      ]
+    },
+    {
+      "Route": "bootstrap/bootstrap.min.css.8inm30yfxf.map",
+      "AssetFile": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "449111"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gBwg2tmA0Ci2u54gMF1jNCVku6vznarkLS6D76htNNQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 15 Mar 2025 12:58:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "8inm30yfxf"
+        },
+        {
+          "Name": "label",
+          "Value": "bootstrap/bootstrap.min.css.map"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-gBwg2tmA0Ci2u54gMF1jNCVku6vznarkLS6D76htNNQ="
+        }
+      ]
+    },
+    {
+      "Route": "bootstrap/bootstrap.min.css.map",
+      "AssetFile": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "449111"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gBwg2tmA0Ci2u54gMF1jNCVku6vznarkLS6D76htNNQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 15 Mar 2025 12:58:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-gBwg2tmA0Ci2u54gMF1jNCVku6vznarkLS6D76htNNQ="
+        }
+      ]
+    },
+    {
+      "Route": "ClientsStatsWeb.4yw1pt1dzv.bundle.scp.css",
+      "AssetFile": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ClientsStatsWeb.bundle.scp.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8199"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DPq9RWDtze8e7h2/senWPqYBPLpa/XTbqeFLcmWdzfE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 15 Mar 2025 16:49:13 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4yw1pt1dzv"
+        },
+        {
+          "Name": "label",
+          "Value": "ClientsStatsWeb.bundle.scp.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-DPq9RWDtze8e7h2/senWPqYBPLpa/XTbqeFLcmWdzfE="
+        }
+      ]
+    },
+    {
+      "Route": "ClientsStatsWeb.4yw1pt1dzv.styles.css",
+      "AssetFile": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\obj\\Debug\\net8.0\\scopedcss\\bundle\\ClientsStatsWeb.styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8199"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DPq9RWDtze8e7h2/senWPqYBPLpa/XTbqeFLcmWdzfE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 15 Mar 2025 16:49:12 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4yw1pt1dzv"
+        },
+        {
+          "Name": "label",
+          "Value": "ClientsStatsWeb.styles.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-DPq9RWDtze8e7h2/senWPqYBPLpa/XTbqeFLcmWdzfE="
+        }
+      ]
+    },
+    {
+      "Route": "ClientsStatsWeb.bundle.scp.css",
+      "AssetFile": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ClientsStatsWeb.bundle.scp.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8199"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DPq9RWDtze8e7h2/senWPqYBPLpa/XTbqeFLcmWdzfE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 15 Mar 2025 16:49:13 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-DPq9RWDtze8e7h2/senWPqYBPLpa/XTbqeFLcmWdzfE="
+        }
+      ]
+    },
+    {
+      "Route": "ClientsStatsWeb.styles.css",
+      "AssetFile": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\obj\\Debug\\net8.0\\scopedcss\\bundle\\ClientsStatsWeb.styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8199"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DPq9RWDtze8e7h2/senWPqYBPLpa/XTbqeFLcmWdzfE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 15 Mar 2025 16:49:12 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-DPq9RWDtze8e7h2/senWPqYBPLpa/XTbqeFLcmWdzfE="
+        }
+      ]
+    },
+    {
+      "Route": "favicon.ifv42okdf2.png",
+      "AssetFile": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\favicon.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1148"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4mWsDy3aHl36ZbGt8zByK7Pvd4kRUoNgTYzRnwmPHwg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 15 Mar 2025 12:58:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ifv42okdf2"
+        },
+        {
+          "Name": "label",
+          "Value": "favicon.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-4mWsDy3aHl36ZbGt8zByK7Pvd4kRUoNgTYzRnwmPHwg="
+        }
+      ]
+    },
+    {
+      "Route": "favicon.png",
+      "AssetFile": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\favicon.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1148"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4mWsDy3aHl36ZbGt8zByK7Pvd4kRUoNgTYzRnwmPHwg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 15 Mar 2025 12:58:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-4mWsDy3aHl36ZbGt8zByK7Pvd4kRUoNgTYzRnwmPHwg="
+        }
+      ]
     }
   ]
 }

@@ -1,9 +1,268 @@
 ﻿@page "/"
+<PageTitle>Client Payment Method Statistics</PageTitle>
 
-<PageTitle>Home</PageTitle>
+<div class="home-hero">
+    <h1>Client Payment Method Statistics</h1>
+    <p class="hero-subtitle">Discover the most popular payment methods your customers prefer. Gain insights, optimize transactions, and enhance your business strategy.</p>
+    <div class="scroll-indicator">
+        <span>Scroll to learn more</span>
+        <div class="arrow">↓</div>
+    </div>
+</div>
 
-<h1>Hello, world!</h1>
+<div class="info-section">
+    <div class="container">
+        <h2>Identify Missed Opportunities</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Customer Payment Preferences</h3>
+                <p>Track which payment methods your unsatisfied customers would prefer to use but currently can't.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💡</div>
+                <h3>Data-Driven Decisions</h3>
+                <p>Make informed choices about which new payment methods to implement based on actual customer demand.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Increase Conversion Rates</h3>
+                <p>Stop losing sales due to limited payment options and capture previously missed revenue.</p>
+            </div>
+        </div>
+    </div>
+</div>
 
-Welcome to your new app.
+<div class="info-section alternate">
+    <div class="container">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Collect Payment Preferences</h3>
+                    <p>Our system tracks when customers abandon checkout due to missing payment methods and logs their preferred alternatives.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Analyze the Data</h3>
+                    <p>We compile comprehensive statistics showing which payment methods are most requested by your customers.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Make Strategic Decisions</h3>
+                    <p>Review the data to decide which payment methods to implement for maximum ROI and customer satisfaction.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<Counter IncrementAmount="5"/>
+<div class="info-section">
+    <div class="container">
+        <h2>Become an Alternative Shopping Destination</h2>
+        <p class="section-intro">List your website as an alternative shopping option for customers who can't use their preferred payment methods elsewhere.</p>
+        <div class="alt-web-features">
+            <div class="alt-web-feature">
+                <h3>Attract Redirected Shoppers</h3>
+                <p>When customers can't complete purchases on other sites due to payment method limitations, your store appears as an alternative if you offer both the product and their preferred payment method.</p>
+            </div>
+            <div class="alt-web-feature">
+                <h3>Expand Your Customer Base</h3>
+                <p>Gain access to shoppers who were originally browsing on competitor websites but couldn't complete their purchases due to payment restrictions.</p>
+            </div>
+            <div class="alt-web-feature">
+                <h3>Competitive Advantage</h3>
+                <p>Stand out from competitors by supporting a wider range of payment methods that meet diverse customer needs and preferences.</p>
+            </div>
+        </div>
+        <div class="cta-container">
+            <a href="/register" class="cta-button">List Your Store as an Alternative Today</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Hero Section */
+    .home-hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        text-align: center;
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        color: white;
+        font-family: Arial, sans-serif;
+        padding: 2rem;
+        position: relative;
+    }
+
+    h1 {
+        font-size: 3rem;
+        font-weight: bold;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        margin-bottom: 10px;
+    }
+
+    .hero-subtitle {
+        font-size: 1.4rem;
+        max-width: 800px;
+        font-weight: 500;
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Replace the keyframes animation with a simpler solution */
+    .scroll-indicator {
+        position: absolute;
+        bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Static arrow with opacity transition for subtle effect */
+    .arrow {
+        font-size: 1.5rem;
+        margin-top: 8px;
+        opacity: 0.7;
+        transition: opacity 0.3s, transform 0.3s;
+    }
+
+    /* Make the arrow slightly more visible on hover and move it a bit */
+    .scroll-indicator:hover .arrow {
+        opacity: 1;
+        transform: translateY(5px);
+    }
+
+    /* Info Sections */
+    .info-section {
+        padding: 5rem 2rem;
+        background-color: white;
+        color: #333;
+    }
+
+        .info-section.alternate {
+            background-color: #f8f9fa;
+        }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        color: #444;
+    }
+
+    .section-intro {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 3rem auto;
+        font-size: 1.2rem;
+        color: #555;
+    }
+
+    /* Feature Cards */
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    .feature-card {
+        background: white;
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
+
+    .feature-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    /* Steps */
+    .steps {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .step {
+        display: flex;
+        gap: 1.5rem;
+        align-items: flex-start;
+    }
+
+    .step-number {
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+    }
+
+    .step-content {
+        flex: 1;
+    }
+
+    /* Alternative Web Features */
+    .alt-web-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .alt-web-feature {
+        background: white;
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    /* CTA */
+    .cta-container {
+        text-align: center;
+        margin-top: 3rem;
+    }
+
+    .cta-button {
+        display: inline-block;
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 30px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        text-decoration: none;
+        box-shadow: 0 4px 12px rgba(106, 17, 203, 0.3);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(106, 17, 203, 0.4);
+        }
+</style>

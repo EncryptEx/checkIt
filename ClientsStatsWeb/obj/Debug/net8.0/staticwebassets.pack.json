@@ -1,24 +1,28 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\miste\\Source\\Repos\\uabthehack25\\ClientsStatsWeb\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ClientsStatsWeb.bundle.scp.css",
-      "PackagePath": "staticwebassets\\ClientsStatsWeb.bundle.scp.css"
+      "Id": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ClientsStatsWeb.bundle.scp.css",
+      "PackagePath": "staticwebassets\\ClientsStatsWeb.4yw1pt1dzv.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\miste\\Source\\Repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\app.css",
+      "Id": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\app.css",
       "PackagePath": "staticwebassets\\app.css"
     },
     {
-      "Id": "C:\\Users\\miste\\Source\\Repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "Id": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\bootstrap\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\miste\\Source\\Repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "Id": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\bootstrap\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\miste\\Source\\Repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\favicon.png",
+      "Id": "C:\\Users\\miste\\source\\repos\\uabthehack25\\ClientsStatsWeb\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ClientsStatsWeb.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ClientsStatsWeb.Microsoft.AspNetCore.StaticWebAssets.props",
