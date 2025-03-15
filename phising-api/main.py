@@ -6,7 +6,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from pysafebrowsing import SafeBrowsing
 
-app = FastAPI()
+# Customize the title of the Swagger documentation
+app = FastAPI(title="Phishing URL Checker API")
 
 # load dotenv
 from dotenv import load_dotenv
