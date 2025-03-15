@@ -10,6 +10,38 @@ var url = window.location.href;
 isPhishing(url).then(isPhishing => {
 	if (isPhishing) {
 		alert("This website is part of a phishing attack");
+	} else {
+		// insert a popup right corner of the website
+		// green and says: "This website is safe"
+		var popup = document.createElement("div");
+		popup.style.position = "fixed";
+		popup.style.top = "0";
+		popup.style.right = "0";
+		popup.style.backgroundColor = "green";
+		popup.style.color = "white";
+		popup.style.padding = "20px";
+		popup.style.fontSize = "20px";
+		popup.style.fontWeight = "bold";
+		popup.style.border = "2px solid white";
+		popup.style.borderRadius = "5px";
+		popup.style.zIndex = "9999";
+		popup.style.boxShadow = "0px 0px 10px rgba(0, 0, 0, 0.5)";
+		popup.style.borderRadius = "5px";
+		popup.innerHTML = "This website is safe";
+		document.body.appendChild(popup);
+
+		// insert a popup left corner of the website
+		// red and says: "This website is not safe"
+		// var popup = document.createElement("div");
+		// popup.style.position = "fixed";
+		// popup.style.top = "0";
+		// popup.style.left = "0";
+		// popup.style.backgroundColor = "red";
+		// popup.style.color = "white";
+		// popup.style.padding = "10px";
+		// popup.style.zIndex = "1000";
+		// popup.innerHTML = "This website is not safe";
+		// document.body.appendChild(popup);
 	}
 });
 
