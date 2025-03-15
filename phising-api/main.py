@@ -9,10 +9,7 @@ from pysafebrowsing import SafeBrowsing
 from googlesearch import search
 import tldextract
 
-from openai import AzureOpenAI
-from bs4 import BeautifulSoup
-import json
-from typing import List
+
 
 # Customize the title of the Swagger documentation
 app = FastAPI(title="Phishing URL Checker API")
