@@ -76,7 +76,7 @@ isPhishing(url).then(isPhishing => {
 		popup.style.position = "fixed";
 		popup.style.top = "0";
 		popup.style.right = "0";
-		popup.style.backgroundColor = "green";
+		popup.style.backgroundColor = "#2C6E49";
 		popup.style.color = "white";
 		popup.style.padding = "20px";
 		popup.style.fontSize = "20px";
@@ -90,10 +90,9 @@ isPhishing(url).then(isPhishing => {
 		
 		var closeButton = document.createElement("button");
 		closeButton.innerHTML = "X";
-		closeButton.style.position = "absolute";
 		closeButton.style.top = "10px";
 		closeButton.style.right = "10px";
-		closeButton.style.backgroundColor = "#f44336";
+		closeButton.style.backgroundColor = "#2C6E49";
 		closeButton.style.borderRadius = "5px";
 		closeButton.style.color = "white";
 		closeButton.style.border = "none";
@@ -102,6 +101,17 @@ isPhishing(url).then(isPhishing => {
 		closeButton.onclick = function() {
 			popup.style.display = "none";
 		};
+
+		// disapear in 2s 
+		setTimeout(() => {
+			// fade out
+			popup.style.transition = "opacity 1s";
+			popup.style.opacity = "0";
+			setTimeout(() => {
+				popup.style.display = "none";
+			}, 1000);
+
+		}, 5000);
 		
 		popup.appendChild(closeButton);
 		document.body.appendChild(popup);
