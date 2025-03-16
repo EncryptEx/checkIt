@@ -124,3 +124,4 @@ def get_similar_products(request: SimilarProducts):
     n = [l for l in results if urlparse(l).netloc != urlparse(no_url).netloc and "search" not in l]
 
     return n
+

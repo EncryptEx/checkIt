@@ -26,7 +26,9 @@ chrome.storage.local.get(['banks'], (result) => {
         .then((data) => {
             console.log("Is the page checkout?: ", data.is_checkout_page);
             console.log("Payment methods: ", data.payment_methods);
-
+            if(!data.is_checkout_page){
+                return;
+            }
             if (
                 !data.payment_methods ||
                 !Array.isArray(data.payment_methods.user_has) ||
@@ -35,7 +37,7 @@ chrome.storage.local.get(['banks'], (result) => {
                 console.log("No payment methods found. Displaying similar products button.");
         
                 // Get the product name from the response (fallback to document.title)
-                const productName = data.product ? data.product : document.title;
+                const productName = data.payment_methods.product ? data.payment_methods.product : document.title;
         
                 // Create an HTML snippet for the similar products button
                 const html = `
@@ -64,12 +66,34 @@ chrome.storage.local.get(['banks'], (result) => {
                         console.log("Similar products:", similarProducts);
                         // Pass the returned list (similarProducts) to display the overlay with thumbnails
                         displaySimilarProducts(similarProducts);
+
                     })
                     .catch((error) => {
                         console.error("Error fetching similar products:", error);
                     });
                 });
                 
+
+
+                        // alert backend that user doesn't have any compatible payment methods
+                        fetch("http://127.0.0.1:8000/no_payment_methods/", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({
+                                country: "México",
+                                user_payment_methods: namesBanks,
+                                original_url: window.location.href,
+                            }),
+                        })
+                        .then((response) => response.json())
+                        .then((data) => {
+                            console.log("NOTIFY: Response from backend:", data);
+                        })
+                        .catch((error) => {
+                            console.error("Error fetching similar products:", error);
+                        });
         
                 // Exit early since there are no available methods
                 return;
@@ -311,6 +335,7 @@ function displaySimilarProducts(links) {
     container.style.display = "flex";
     container.style.flexWrap = "wrap";
     container.style.justifyContent = "center";
+    container.style.position = "relative";
     container.style.gap = "10px";
     
     // For each URL in the list, create a thumbnail and link
