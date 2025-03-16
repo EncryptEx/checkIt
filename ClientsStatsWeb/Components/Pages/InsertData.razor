@@ -1,0 +1,67 @@
+@page "/insert-data"
+@using Newtonsoft.Json
+@using Firebase.Database.Query
+@rendermode InteractiveServer
+@inject Firebase.Database.FirebaseClient FirebaseClient
+
+
+<h3>Send Bulk Data to Firebase</h3>
+
+<button @onclick="SendBulkData">Submit</button>
+
+<p>@message</p>
+
+@code {
+    private string message = "";
+
+    private async Task SendBulkData()
+    {
+        Console.WriteLine("Reading JSON file...");
+
+        try
+        {
+            // Read JSON file (Ensure it's in "wwwroot/data/users1.json")    // Change the number to put the data needed
+            string filePath = Path.Combine("wwwroot", "data", "users3.json");
+            string jsonData = await File.ReadAllTextAsync(filePath);
+
+            // Deserialize JSON into Dictionary
+            Dictionary<string, User>? usersData = JsonConvert.DeserializeObject<Dictionary<string, User>>(jsonData);
+            
+
+            // Ensure data exists
+            if (usersData == null || usersData.Count == 0)
+            {
+                message = "No users found in JSON file.";
+                return;
+            }
+
+            // Loop through each user and send to Firebase
+            foreach (var user in usersData)
+            {
+                await FirebaseClient
+                    .Child("users")
+                    .Child(user.Key)
+                    .PutAsync(JsonConvert.SerializeObject(user.Value)); // Serializing object   (put if it exists, update if not create)
+            }
+
+            message = "All users inserted successfully!";
+        }
+        catch (Exception ex)
+        {
+            message = $"Error: {ex.Message}";
+        }
+
+        Console.WriteLine("\nFinished inserting elements from JSON");
+
+
+        StateHasChanged(); // Ensure UI updates
+    }
+
+
+    // Define the User class
+    private class User
+    {
+        public string Name { get; set; }
+        public List<string> payment_methods { get; set; }
+    }
+}

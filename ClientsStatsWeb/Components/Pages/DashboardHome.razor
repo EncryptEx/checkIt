@@ -1,8 +1,113 @@
 ﻿@page "/Dashboard"
 @layout DashboardLayout
 
-<PageTitle>Home</PageTitle>
+@inject Firebase.Database.FirebaseClient FirebaseClient
+
+<PageTitle>Dashboard</PageTitle>
 
 <h1>Dashboard</h1>
 
-Dashboard homepage
+@if (paymentData != null)
+{
+    <img src="@quickChartUrl" alt="Payment Methods Chart" />
+}
+else
+{
+    <p>Loading data...</p>
+}
+
+@code {
+    private Dictionary<string, int>? paymentData;
+    private string quickChartUrl = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await FetchPaymentData();
+    }
+
+    private async Task FetchPaymentData()
+    {
+        try
+        {
+            var users = await FirebaseClient.Child("users").OnceAsync<User>();
+
+            if (users == null)
+            {
+                Console.WriteLine("Firebase data is null.");
+                return;
+            }
+
+            paymentData = new Dictionary<string, int>();
+
+            foreach (var user in users)
+            {
+                if (user.Object.payment_methods != null)
+                {
+                    foreach (var method in user.Object.payment_methods)
+                    {
+                        if (paymentData.ContainsKey(method))
+                            paymentData[method]++;
+                        else
+                            paymentData[method] = 1;
+                    }
+                }
+            }
+
+            GenerateChartUrl();
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error fetching Firebase data: {ex.Message}");
+        }
+    }
+
+    private void GenerateChartUrl()
+    {
+        if (paymentData?.Count == 0) // Improved null and empty check
+            return;
+
+        var labels = string.Join(",", paymentData.Keys.Select(k => $"\"{k}\""));
+        var data = string.Join(",", paymentData.Values);
+        var colors = new List<string> { "#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF", "#FF9F40" };
+        var colorSet = string.Join(",", paymentData.Keys.Select((_, i) => $"\"{colors[i % colors.Count]}\""));
+
+        var chartJson = $@"{{
+            type:'bar',
+            options:{{
+                scales:{{
+                    y:{{
+                        ticks:{{
+                            stepSize: 1, 
+                            callback: function(value, index, values) {{
+                                return Number.isInteger(value) ? value : '';
+                            }}
+                        }}
+                    }}
+                }},
+                legend: {{
+                    labels: {{
+                        fontColor: 'gray' // Set legend label color to gray
+                    }},
+                    backgroundColor: 'lightgray'
+                }}
+            }},
+            data:{{
+                labels:[{labels}],
+                datasets:[{{
+                    label:'Payment Methods',
+                    data:[{data}],
+                    backgroundColor:[{colorSet}]
+                }}]
+            }}
+        }}";
+
+        quickChartUrl = $"https://quickchart.io/chart?c={System.Web.HttpUtility.UrlEncode(chartJson)}";
+    }
+
+    private class User
+    {
+        public string Name { get; set; }
+        public List<string> payment_methods { get; set; }
+    }
+}

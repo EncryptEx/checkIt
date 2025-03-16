@@ -32,7 +32,8 @@ if (FirebaseApp.DefaultInstance == null)
 builder.Services.AddSingleton(provider => new FirebaseClient(firebaseDatabaseUrl));
 
 
-
+// Add Firebase Authentication Service
+builder.Services.AddSingleton<FirebaseAuthService>();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()

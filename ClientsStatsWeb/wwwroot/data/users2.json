@@ -1,0 +1,99 @@
+{
+    "-OLQF7jVAPg_m-iscyEV": {
+      "Name": "Maximiliano Cortez Reséndez",
+      "payment_methods": ["PayPal", "Google Pay", "Credit Card"]
+    },
+    "-OLQG8jVAPg_m-iscxYZ": {
+      "Name": "Javier Escalante Villagómez",
+      "payment_methods": ["PayPal"]
+    },
+    "-OLQH9jVAPg_m-isczAB": {
+      "Name": "Joana Nascimento",
+      "payment_methods": ["Apple Pay", "PayPal", "Bitcoin"]
+    },
+    "-OLQI0jVAPg_m-isczCD": {
+      "Name": "Vitor Gabriel Pires",
+      "payment_methods": ["Google Pay"]
+    },
+    "-OLQJ1jVAPg_m-isczEF": {
+      "Name": "Luiz Miguel Souza",
+      "payment_methods": ["Google Pay", "PayPal", "Credit Card"]
+    },
+    "-OLQJ1jVBTg_m-isczEZ": {
+      "Name": "Arnau Pablo Salvador",
+      "payment_methods": ["Google Pay", "Banco Peru"]
+    },
+    "-OLQK2jVAPg_m-iscAA1": {
+      "Name": "Carlos Eduardo Pérez",
+      "payment_methods": ["Mercado Pago", "OXXO Pay"]
+    },
+    "-OLQK3jVAPg_m-iscAA2": {
+      "Name": "Andrea Fernández",
+      "payment_methods": ["Credit Card", "Boleto Bancário"]
+    },
+    "-OLQK4jVAPg_m-iscAA3": {
+      "Name": "Sofia Rodríguez",
+      "payment_methods": ["PayPal", "PicPay"]
+    },
+    "-OLQK5jVAPg_m-iscAA4": {
+      "Name": "Diego Hernández",
+      "payment_methods": ["Nubank", "Google Pay"]
+    },
+    "-OLQK6jVAPg_m-iscAA5": {
+      "Name": "Miguel Ángel Chávez",
+      "payment_methods": ["Apple Pay", "PayPal"]
+    },
+    "-OLQK7jVAPg_m-iscAA6": {
+      "Name": "Lucas Silva",
+      "payment_methods": ["Banco de Chile", "Bitcoin"]
+    },
+    "-OLQK8jVAPg_m-iscAA7": {
+      "Name": "Juliana Costa",
+      "payment_methods": ["Boleto Bancário", "Google Pay"]
+    },
+    "-OLQK9jVAPg_m-iscAA8": {
+      "Name": "Fernando Gutiérrez",
+      "payment_methods": ["OXXO Pay", "Mercado Pago"]
+    },
+    "-OLQL0jVAPg_m-iscAA9": {
+      "Name": "Ana Beatriz Morales",
+      "payment_methods": ["Nubank", "PicPay"]
+    },
+    "-OLQL1jVAPg_m-iscAB0": {
+      "Name": "Ricardo López",
+      "payment_methods": ["Banco de Chile", "Apple Pay"]
+    },
+    "-OLQL2jVAPg_m-iscAB1": {
+      "Name": "Mariana Torres",
+      "payment_methods": ["Google Pay", "Mercado Pago"]
+    },
+    "-OLQL3jVAPg_m-iscAB2": {
+      "Name": "Pedro Camilo Vargas",
+      "payment_methods": ["OXXO Pay", "PayPal"]
+    },
+    "-OLQL4jVAPg_m-iscAB3": {
+      "Name": "Gabriela Sánchez",
+      "payment_methods": ["Credit Card", "Boleto Bancário"]
+    },
+    "-OLQL5jVAPg_m-iscAB4": {
+      "Name": "Cristian Herrera",
+      "payment_methods": ["Apple Pay", "Google Pay"]
+    },
+    "-OLQL6jVAPg_m-iscAB5": {
+      "Name": "Paula Mendes",
+      "payment_methods": ["Banco Peru", "PicPay"]
+    },
+    "-OLQL7jVAPg_m-iscAB6": {
+      "Name": "Jorge Enrique Ramírez",
+      "payment_methods": ["Nubank", "Bitcoin"]
+    },
+    "-OLQL8jVAPg_m-iscAB7": {
+      "Name": "Isabela Gómez",
+      "payment_methods": ["Google Pay", "Mercado Pago"]
+    },
+    "-OLQL9jVAPg_m-iscAB8": {
+      "Name": "Rodrigo Almeida",
+      "payment_methods": ["Boleto Bancário", "PayPal"]
+    }
+  }
+  
