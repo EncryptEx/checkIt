@@ -56,6 +56,7 @@ chrome.storage.local.get(['banks'], (result) => {
                         body: JSON.stringify({
                             product: productName,
                             user_payment_methods: namesBanks,
+                            original_url: window.location.href,
                         }),
                     })
                     .then((response) => response.json())
