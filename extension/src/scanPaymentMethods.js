@@ -76,11 +76,16 @@ chrome.storage.local.get(['banks'], (result) => {
             });
 
             console.log("Final methods: ", finalMethods);
+
+            const low_payment_methods_w_user = data.payment_methods.user_has.map(method => method.toLowerCase());
+
             let not_available = [];
-            const availablePromises = data.payment_methods.available.map((element) => {
+            const availablePromises = namesBanks.map((element) => {
                 return new Promise((resolve, reject) => {
                     // if not in user_has, add to not_available
-                    if (!data.payment_methods.user_has.includes(element)) {
+                    console.log("Element: ", element);
+                    console.log("Low payment methods: ", low_payment_methods_w_user);
+                    if (!low_payment_methods_w_user.includes(element)) {
                         chrome.storage.local.get(['bankPool'], (result) => {
                             let bankPool = result.bankPool || [];
                             const bank = bankPool.find(bank => bank.name.toLowerCase() === element.toLowerCase());
