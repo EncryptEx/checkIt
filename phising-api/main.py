@@ -10,8 +10,9 @@ from pysafebrowsing import SafeBrowsing
 from googlesearch import search
 import tldextract
 from bs4 import BeautifulSoup
-from AI_utils import extract_payment_methods
+from AI_utils import extract_payment_methods, extract_checkout_info
 from urllib.parse import urlparse
+
 
 import firebase_admin
 from firebase_admin import credentials
@@ -145,26 +146,25 @@ async def scan_page(request: CheckoutPageRequest):
     # use keywords instead of openai
     
     html_content = base64.b64decode(request.html_content).decode('utf-8')
-    soup = BeautifulSoup(html_content, "html.parser")
-    text_content = soup.get_text(separator=' ')
+
+    answ = extract_checkout_info(html_content)
     
-    keywords = ["checkout", "payment", "credit card", "shipping", "billing", "order summary", "place order", "complete order", 
-                "pago", "tarjeta de crédito", "envío", "facturación", "resumen del pedido", "realizar pedido", "completar pedido",
-                "pagamento", "cartão de crédito", "envio", "faturamento", "resumo do pedido", "fazer pedido", "completar pedido",
-                "paiement", "carte de crédit", "expédition", "facturation", "résumé de la commande", "passer commande", "compléter la commande",
-                "pagamento", "cartão de crédito", "expedição", "faturamento", "resumo do pedido", "fazer pedido", "completar pedido",
-                "pay", "credit card", "shipping", "billing", "order summary", "place order", "complete order", "bank", "banco", "VAT"]
-                
-    is_checkout_page = any(keyword in text_content for keyword in keywords)
-    
-    
-    
-    # send async to extract payment methods of website
-    
-    response = extract_payment_methods(html_content, request.user_payment_methods)
-    
-    # response = request.user_payment_methods
-    return {"is_checkout_page": is_checkout_page, "payment_methods": response}
+    is_checkout_page = answ["is_checkout"]
+
+    if is_checkout_page: 
+        response = extract_payment_methods(html_content, request.user_payment_methods)
+        if "product" in response.keys():
+            print(response["product"])
+        return {"is_checkout_page": is_checkout_page, "payment_methods": response, **({"product": response["product"]} if "product" in response.keys() and response["product"] else {})}
+
+    if "product" in answ.keys():
+        print(answ["product"])
+    return {
+        "is_checkout_page": is_checkout_page,
+        "payment_methods": response,
+        **({"product": answ["product"]} if "product" in answ.keys() and answ["product"] else {})
+    }
+
 
 
 class SimilarProducts(BaseModel):

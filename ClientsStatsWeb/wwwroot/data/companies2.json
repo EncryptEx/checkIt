@@ -9,7 +9,8 @@
         "locations": {
             "Mexico": "38",
             "Colombia": "42"
-        }
+        },
+        "number_of_redirected_users": 8
     },
     "Amazon": {
         "payment_methods": {
@@ -21,7 +22,8 @@
         "locations": {
             "Colombia": "29",
             "Ecuador": "35"
-        }
+        },
+        "number_of_redirected_users": 13
     },
     "Mercado Libre": {
         "payment_methods": {
@@ -35,7 +37,8 @@
             "Peru": "24",
             "Argentina": "17",
             "Mexico": "42"
-        }
+        },
+        "number_of_redirected_users": 3
     },
     "Falabella": {
         "payment_methods": {
@@ -48,7 +51,8 @@
             "Colombia": "33",
             "Brazil": "24",
             "Mexico": "40"
-        }
+        },
+        "number_of_redirected_users": 5
     },
     "Despegar": {
         "payment_methods": {
@@ -60,7 +64,8 @@
         "locations": {
             "Colombia": "28",
             "Mexico": "8"
-        }
+        },
+        "number_of_redirected_users": 4
     },
     "Latam Airlines": {
         "payment_methods": {
@@ -74,7 +79,8 @@
             "Ecuador": "9",
             "Argentina": "47",
             "Brazil": "27"
-        }
+        },
+        "number_of_redirected_users": 16
     },
     "Brandlive": {
         "payment_methods": {
@@ -84,7 +90,7 @@
         "locations": {
             "Colombia": "43",
             "Peru": "32"
-        }
+        },
+        "number_of_redirected_users": 7
     }
 }
-

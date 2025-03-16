@@ -1,4 +1,4 @@
-@page "/Dashboard/companies"
+@page "/Dashboard/mycompany"
 @layout DashboardLayout
 
 @inject Firebase.Database.FirebaseClient FirebaseClient
@@ -8,99 +8,101 @@
 
 <style>
     body {
-        font-family: 'Roboto', sans-serif; /* Modern font */
-        background-color: #f4f7fa;
+    font-family: 'Roboto', sans-serif; /* Modern font */
+    background-color: #f4f7fa;
     }
 
     h1 {
-        text-align: center;
-        color: #0056b3;
-        font-size: 2.5em;
-        margin-bottom: 1em;
+    text-align: center;
+    color: #0056b3;
+    font-size: 2.5em;
+    margin-bottom: 1em;
     }
 
     .centered-title {
-        text-align: center;
-        text-shadow: 3px 3px 6px rgba(0, 0, 139, 0.3); /* Softer shadow */
-        color: #0056b3; /* Slightly darker blue for better readability */
-        font-size: 3em;
-        font-weight: 700; /* Bold for emphasis */
-        margin-bottom: 1.5em;
-        letter-spacing: 1px; /* Slight spacing for elegance */
+    text-align: center;
+    text-shadow: 3px 3px 6px rgba(0, 0, 139, 0.3); /* Softer shadow */
+    color: #0056b3; /* Slightly darker blue for better readability */
+    font-size: 3em;
+    font-weight: 700; /* Bold for emphasis */
+    margin-bottom: 1.5em;
+    letter-spacing: 1px; /* Slight spacing for elegance */
     }
 
     table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 0 auto;
-        background-color: #fff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        overflow: hidden;
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
     }
 
     tr {
-        border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
     }
 
     td {
-        padding: 20px;
-        vertical-align: top;
+    padding: 20px;
+    vertical-align: top;
     }
 
     .company-name {
-        color: #111111; /* Distinctive color for company name */
-        font-family: 'Montserrat', sans-serif; /* Different modern font */
-        font-size: 2em;
-        margin-bottom: 0.5em;
+    color: #111111; /* Distinctive color for company name */
+    font-family: 'Montserrat', sans-serif; /* Different modern font */
+    font-size: 2em;
+    margin-bottom: 0.5em;
     }
 
     .info-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     }
 
-        .info-container img {
-            max-width: 48%; /* Adjusted to fit side by side */
-            height: auto;
-            display: block;
-            margin: 0 auto;
-            border-radius: 5px;
-        }
+    .info-container img {
+    max-width: 48%; /* Adjusted to fit side by side */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+    }
 
     .details {
-        margin-top: 1em;
-        text-align: center;
+    margin-top: 1em;
+    text-align: center;
     }
 
     h3 {
-        color: #333;
-        font-size: 1.5em;
-        margin-bottom: 0.5em;
+    color: #333;
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
     }
 
     h4 {
-        color: #555;
-        font-size: 1.2em;
-        margin-top: 1em;
-        margin-bottom: 0.5em;
+    color: #555;
+    font-size: 1.2em;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
     }
 
     p {
-        text-align: center;
-        font-size: 1.2em;
-        color: #888;
+    text-align: center;
+    font-size: 1.2em;
+    color: #888;
     }
 </style>
 
-<h1 class="centered-title">Payment Methods by Company</h1>
+<h1 class="centered-title">My company</h1>
 
 @if (companyPaymentData.Count > 0)
 {
     <table>
         @foreach (var company in companyPaymentData)
         {
+            if (!company.Key.Contains("Latam Airlines")) continue;
+
             <tr>
                 <td>
                     <div class="company-name">@company.Key</div>
