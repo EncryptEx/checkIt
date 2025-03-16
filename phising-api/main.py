@@ -11,7 +11,7 @@ from googlesearch import search
 import tldextract
 from bs4 import BeautifulSoup
 from AI_utils import extract_payment_methods
-
+from urllib.parse import urlparse
 
 # Customize the title of the Swagger documentation
 app = FastAPI(title="Phishing URL Checker API")
@@ -112,11 +112,15 @@ async def scan_page(request: CheckoutPageRequest):
 class SimilarProducts(BaseModel):
     product: str
     user_payment_methods: list[str]
+    original_url: str
 
 @app.post("/scanget_similar_products_page/")
 def get_similar_products(request: SimilarProducts):
     product_name = request.product
     bank_name = " ".join(request.user_payment_methods)
     query = f"{product_name} {bank_name}"
-    results = list(search(query, num_results=3))
-    return results
+    results = list(search(query, num_results=5))
+    no_url = request.original_url
+    n = [l for l in results if urlparse(l).netloc != urlparse(no_url).netloc and "search" not in l]
+
+    return n
