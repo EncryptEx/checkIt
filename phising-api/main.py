@@ -105,3 +105,16 @@ async def scan_page(request: CheckoutPageRequest):
     
     # response = request.user_payment_methods
     return {"is_checkout_page": is_checkout_page, "payment_methods": response}
+
+
+class SimilarProducts(BaseModel):
+    product: str
+    user_payment_methods: list[str]
+
+@app.post("/scanget_similar_products_page/")
+def get_similar_products(request: SimilarProducts):
+    product_name = request.product
+    bank_name = " ".join(request.user_payment_methods)
+    query = f"{product_name} {bank_name}"
+    results = list(search(query, num_results=3))
+    return results

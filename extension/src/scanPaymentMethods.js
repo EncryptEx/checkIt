@@ -27,8 +27,50 @@ chrome.storage.local.get(['banks'], (result) => {
             console.log("Is the page checkout?: ", data.is_checkout_page);
             console.log("Payment methods: ", data.payment_methods);
 
-            if (data.payment_methods.user_has.length === 0) {
-                console.log("No payment methods found");
+            if (
+                !data.payment_methods ||
+                !Array.isArray(data.payment_methods.user_has) ||
+                data.payment_methods.user_has.length === 0
+            ) {
+                console.log("No payment methods found. Displaying similar products button.");
+        
+                // Get the product name from the response (fallback to document.title)
+                const productName = data.product ? data.product : document.title;
+        
+                // Create an HTML snippet for the similar products button
+                const html = `
+                    <div id="similar-products-container" style="position: fixed; top: 20px; left: 20px; background: #fff; padding: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.3); z-index: 10000;">
+                        <button id="similar-products-button" style="padding: 10px; font-size: 16px; cursor: pointer;">Look for similar products</button>
+                    </div>
+                `;
+        
+                // Insert the HTML into the page
+                document.body.insertAdjacentHTML('beforeend', html);
+                const similarProductsButton = document.getElementById('similar-products-button');
+                similarProductsButton.addEventListener("click", () => {
+                    fetch("http://127.0.0.1:8000/scanget_similar_products_page/", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            product: productName,
+                            user_payment_methods: namesBanks,
+                        }),
+                    })
+                    .then((response) => response.json())
+                    .then((similarProducts) => {
+                        console.log("Similar products:", similarProducts);
+                        // Pass the returned list (similarProducts) to display the overlay with thumbnails
+                        displaySimilarProducts(similarProducts);
+                    })
+                    .catch((error) => {
+                        console.error("Error fetching similar products:", error);
+                    });
+                });
+                
+        
+                // Exit early since there are no available methods
                 return;
             }
             
@@ -242,4 +284,82 @@ function openDialog(finalMethods, not_available) {
     `;
     document.body.appendChild(dialog);
     dialog.showModal();
+}
+
+
+function displaySimilarProducts(links) {
+    // Create a full-page overlay element
+    const overlay = document.createElement("div");
+    overlay.style.position = "fixed";
+    overlay.style.top = "0";
+    overlay.style.left = "0";
+    overlay.style.width = "100%";
+    overlay.style.height = "100%";
+    overlay.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+    overlay.style.zIndex = "10000";
+    overlay.style.display = "flex";
+    overlay.style.flexDirection = "column";
+    overlay.style.alignItems = "center";
+    overlay.style.paddingTop = "20px";
+
+    // Create a container for the thumbnails at the top center
+    const container = document.createElement("div");
+    container.style.backgroundColor = "#fff";
+    container.style.padding = "20px";
+    container.style.borderRadius = "10px";
+    container.style.display = "flex";
+    container.style.flexWrap = "wrap";
+    container.style.justifyContent = "center";
+    container.style.gap = "10px";
+    
+    // For each URL in the list, create a thumbnail and link
+    links.forEach(link => {
+        const thumbContainer = document.createElement("div");
+        thumbContainer.style.display = "flex";
+        thumbContainer.style.flexDirection = "column";
+        thumbContainer.style.alignItems = "center";
+        
+        // Generate a thumbnail using the mshots API
+        const thumbnailUrl = "https://s.wordpress.com/mshots/v1/" + encodeURIComponent(link) + "?w=300&h=200";
+        const img = document.createElement("img");
+        img.src = thumbnailUrl;
+        img.alt = link;
+        img.style.width = "300px";
+        img.style.height = "200px";
+        img.style.objectFit = "cover";
+        img.style.border = "1px solid #ccc";
+        img.style.borderRadius = "5px";
+        
+        // Create an anchor element for the URL below the image
+        const anchor = document.createElement("a");
+        anchor.href = link;
+        anchor.target = "_blank";
+        anchor.textContent = link;
+        anchor.style.wordBreak = "break-all";
+        anchor.style.marginTop = "5px";
+        anchor.style.fontSize = "12px";
+        anchor.style.color = "#007BFF";
+        anchor.style.textDecoration = "none";
+        
+        thumbContainer.appendChild(img);
+        thumbContainer.appendChild(anchor);
+        container.appendChild(thumbContainer);
+    });
+    
+    // Add a close button in the upper right corner of the overlay
+    const closeButton = document.createElement("button");
+    closeButton.textContent = "Close";
+    closeButton.style.position = "absolute";
+    closeButton.style.top = "20px";
+    closeButton.style.right = "20px";
+    closeButton.style.padding = "10px";
+    closeButton.style.fontSize = "16px";
+    closeButton.style.cursor = "pointer";
+    closeButton.addEventListener("click", () => {
+        document.body.removeChild(overlay);
+    });
+    overlay.appendChild(closeButton);
+    
+    overlay.appendChild(container);
+    document.body.appendChild(overlay);
 }

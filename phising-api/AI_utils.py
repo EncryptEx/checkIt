@@ -32,12 +32,16 @@ def extract_payment_methods(html_content, user_payment_methods):
     text_content = soup.get_text(separator=' ')
 
     prompt = (
-        "Identify which payment methods appear in the given text, identify just the banks or entities not the payment method:"
-        f"Text:\n{text_content}\n\n"
-        "Return a JSON with two lists and one element: 'available' for all found methods, and 'user_has' for those that match the following list"
-        f"{', '.join(user_payment_methods)}. \n\n"
-        "the element is the full name and reference of the product that the client is trying to buy"
+        "Extract all banks or financial entities mentioned in the following text (ignore the payment method names themselves). "
+        "Then, create a JSON object with the following keys:\n\n"
+        "1. 'available': a list of all banks/entities found in the text.\n"
+        "2. 'user_has': a list containing those banks/entities (from the following list: " 
+        f"{', '.join(user_payment_methods)}) that also appear in the text.\n"
+        "3. 'product': a string representing the full name and reference of the product the client is trying to purchase.\n\n"
+        "Text:\n"
+        f"{text_content}"
     )
+
 
 
 
