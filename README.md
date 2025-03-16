@@ -103,6 +103,8 @@ Although FlowiseAI was initially considered, the final implementation was carrie
 
 ![6](https://github.com/user-attachments/assets/beaa5438-5337-4459-a78c-6509afe8aaca)
 
+![9](https://github.com/user-attachments/assets/ace7f808-c0b1-4599-9d15-7e955167e230)
+
 ![8](https://github.com/user-attachments/assets/d2b59a49-7a7b-4794-a797-d0cb2be6796f)
 
 
