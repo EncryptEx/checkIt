@@ -153,7 +153,7 @@ async def scan_page(request: CheckoutPageRequest):
         print(answ["product"])
     return {
         "is_checkout_page": is_checkout_page,
-        "payment_methods": response,
+        "payment_methods": [],
         **({"product": answ["product"]} if "product" in answ.keys() and answ["product"] else {})
     }
 
