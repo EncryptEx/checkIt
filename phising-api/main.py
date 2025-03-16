@@ -140,12 +140,16 @@ async def scan_page(request: CheckoutPageRequest):
 
     if is_checkout_page: 
         response = extract_payment_methods(html_content, request.user_payment_methods)
-        return {"is_checkout_page": is_checkout_page, "payment_methods": response}
+        if "product" in response.keys():
+            print(response["product"])
+        return {"is_checkout_page": is_checkout_page, "payment_methods": response, **({"product": response["product"]} if "product" in response.keys() and response["product"] else {})}
 
+    if "product" in answ.keys():
+        print(answ["product"])
     return {
         "is_checkout_page": is_checkout_page,
         "payment_methods": response,
-        **({"product": answ["product"]} if "product" in answ.keys() else {})
+        **({"product": answ["product"]} if "product" in answ.keys() and answ["product"] else {})
     }
 
 
