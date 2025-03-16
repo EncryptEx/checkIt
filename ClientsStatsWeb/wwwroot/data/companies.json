@@ -1,0 +1,367 @@
+{
+    "Interbank": {
+        "users": [
+            {
+                "Name": "Renata Castro",
+                "payment_methods": [
+                    "Boleto Banc\u00e1rio",
+                    "PayPal"
+                ]
+            },
+            {
+                "Name": "Carlos Varela",
+                "payment_methods": [
+                    "OXXO Pay",
+                    "PicPay"
+                ]
+            },
+            {
+                "Name": "Samantha Ch\u00e1vez",
+                "payment_methods": [
+                    "Apple Pay",
+                    "Mercado Pago"
+                ]
+            },
+            {
+                "Name": "Leonardo Espinoza",
+                "payment_methods": [
+                    "Bitcoin",
+                    "Google Pay"
+                ]
+            },
+            {
+                "Name": "Francisco Mendoza",
+                "payment_methods": [
+                    "Google Pay",
+                    "Banco de Chile"
+                ]
+            },
+            {
+                "Name": "Emilia Guzm\u00e1n",
+                "payment_methods": [
+                    "Banco Peru",
+                    "PayPal"
+                ]
+            }
+        ]
+    },
+    "Nubank": {
+        "users": [
+            {
+                "Name": "Emiliano Torres",
+                "payment_methods": [
+                    "Apple Pay",
+                    "Mercado Pago"
+                ]
+            },
+            {
+                "Name": "Roberto S\u00e1nchez",
+                "payment_methods": [
+                    "PayPal",
+                    "Mercado Pago",
+                    "Boleto Banc\u00e1rio"
+                ]
+            },
+            {
+                "Name": "Pablo Navarro",
+                "payment_methods": [
+                    "Apple Pay",
+                    "OXXO Pay"
+                ]
+            },
+            {
+                "Name": "Gabriela M\u00e9ndez",
+                "payment_methods": [
+                    "Credit Card",
+                    "Banco Peru"
+                ]
+            }
+        ]
+    },
+    "Banco do Brasil": {
+        "users": [
+            {
+                "Name": "Esteban Mart\u00ednez",
+                "payment_methods": [
+                    "Credit Card",
+                    "PicPay"
+                ]
+            },
+            {
+                "Name": "Eduardo Fuentes",
+                "payment_methods": [
+                    "Bitcoin",
+                    "Banco Peru"
+                ]
+            },
+            {
+                "Name": "Paola Silva",
+                "payment_methods": [
+                    "PayPal",
+                    "Banco de Chile"
+                ]
+            },
+            {
+                "Name": "Javier Ortega",
+                "payment_methods": [
+                    "Boleto Banc\u00e1rio",
+                    "Google Pay"
+                ]
+            },
+            {
+                "Name": "Catalina Vera",
+                "payment_methods": [
+                    "Boleto Banc\u00e1rio",
+                    "Credit Card"
+                ]
+            },
+            {
+                "Name": "Rodrigo Pe\u00f1a",
+                "payment_methods": [
+                    "PicPay",
+                    "Bitcoin"
+                ]
+            },
+            {
+                "Name": "Isabela Moreno",
+                "payment_methods": [
+                    "Banco Peru",
+                    "Google Pay"
+                ]
+            },
+            {
+                "Name": "Joaqu\u00edn Rojas",
+                "payment_methods": [
+                    "Banco de Chile",
+                    "Bitcoin"
+                ]
+            }
+        ]
+    },
+    "MercadoLibre": {
+        "users": [
+            {
+                "Name": "Gabriel Jim\u00e9nez",
+                "payment_methods": [
+                    "PayPal",
+                    "PicPay"
+                ]
+            }
+        ]
+    },
+    "Ita\u00fa Unibanco": {
+        "users": [
+            {
+                "Name": "Ariana Ben\u00edtez",
+                "payment_methods": [
+                    "Boleto Banc\u00e1rio",
+                    "OXXO Pay"
+                ]
+            },
+            {
+                "Name": "Alejandro Ramos",
+                "payment_methods": [
+                    "PayPal",
+                    "Google Pay"
+                ]
+            },
+            {
+                "Name": "Luisa Fern\u00e1ndez",
+                "payment_methods": [
+                    "Bitcoin",
+                    "Nubank"
+                ]
+            },
+            {
+                "Name": "Mariana Sandoval",
+                "payment_methods": [
+                    "Credit Card",
+                    "Mercado Pago"
+                ]
+            },
+            {
+                "Name": "Andr\u00e9s Mu\u00f1oz",
+                "payment_methods": [
+                    "PayPal",
+                    "Mercado Pago"
+                ]
+            },
+            {
+                "Name": "Valentina L\u00f3pez",
+                "payment_methods": [
+                    "OXXO Pay",
+                    "Credit Card"
+                ]
+            }
+        ]
+    },
+    "Bancolombia": {
+        "users": [
+            {
+                "Name": "Natalia Casta\u00f1eda",
+                "payment_methods": [
+                    "Nubank",
+                    "Boleto Banc\u00e1rio"
+                ]
+            },
+            {
+                "Name": "Daniela \u00c1lvarez",
+                "payment_methods": [
+                    "Google Pay",
+                    "Banco Peru"
+                ]
+            },
+            {
+                "Name": "Santiago C\u00e1rdenas",
+                "payment_methods": [
+                    "Bitcoin",
+                    "Banco de Chile"
+                ]
+            }
+        ]
+    },
+    "BBVA Argentina": {
+        "users": [
+            {
+                "Name": "Diego Vargas",
+                "payment_methods": [
+                    "PicPay",
+                    "Banco Peru"
+                ]
+            },
+            {
+                "Name": "Sofia Ram\u00edrez",
+                "payment_methods": [
+                    "Google Pay",
+                    "PicPay"
+                ]
+            },
+            {
+                "Name": "Fabi\u00e1n Ortiz",
+                "payment_methods": [
+                    "Google Pay",
+                    "Banco Peru"
+                ]
+            },
+            {
+                "Name": "Manuel Vargas",
+                "payment_methods": [
+                    "Banco Peru",
+                    "Apple Pay"
+                ]
+            }
+        ]
+    },
+    "Banco Patagonia": {
+        "users": [
+            {
+                "Name": "Vanessa Camacho",
+                "payment_methods": [
+                    "OXXO Pay",
+                    "Mercado Pago"
+                ]
+            },
+            {
+                "Name": "Luciana Duarte",
+                "payment_methods": [
+                    "Banco de Chile",
+                    "Nubank"
+                ]
+            },
+            {
+                "Name": "Ana\u00eds Romero",
+                "payment_methods": [
+                    "PayPal",
+                    "Apple Pay"
+                ]
+            }
+        ]
+    },
+    "Banco de Chile": {
+        "users": [
+            {
+                "Name": "Juan Esteban Reyes",
+                "payment_methods": [
+                    "Mercado Pago",
+                    "Google Pay"
+                ]
+            },
+            {
+                "Name": "Camila Delgado",
+                "payment_methods": [
+                    "Apple Pay",
+                    "Credit Card"
+                ]
+            },
+            {
+                "Name": "Mateo Gonzales",
+                "payment_methods": [
+                    "Nubank",
+                    "PayPal"
+                ]
+            }
+        ]
+    },
+    "Santander Mexico": {
+        "users": [
+            {
+                "Name": "Fernanda Castillo",
+                "payment_methods": [
+                    "Credit Card",
+                    "Google Pay"
+                ]
+            },
+            {
+                "Name": "Mart\u00edn Herrera",
+                "payment_methods": [
+                    "OXXO Pay",
+                    "Nubank"
+                ]
+            }
+        ]
+    },
+    "Amazon": {
+        "users": [
+            {
+                "Name": "Fernanda Casas",
+                "payment_methods": [
+                    "Credit Card",
+                    "Google Pay",
+                    "Nubank"
+                ]
+            },
+            {
+                "Name": "Mart\u00edn Gonzales",
+                "payment_methods": [
+                    "OXXO Pay",
+                    "Credit Card"
+                ]
+            }
+        ]
+    },
+    "Makeup": {
+        "users": [
+            {
+                "Name": "Natalia Casta\u00f1eda",
+                "payment_methods": [
+                    "Nubank",
+                    "Boleto Banc\u00e1rio"
+                ]
+            },
+            {
+                "Name": "Daniela \u00c1lvarez",
+                "payment_methods": [
+                    "Google Pay",
+                    "Banco Peru"
+                ]
+            },
+            {
+                "Name": "Santiago C\u00e1rdenas",
+                "payment_methods": [
+                    "Bitcoin",
+                    "Banco de Chile"
+                ]
+            }
+        ]
+    }
+}

@@ -45,6 +45,34 @@
             }
 
             message = "All users inserted successfully!";
+
+
+
+              // Read Companies JSON
+            string companiesFilePath = Path.Combine("wwwroot", "data", "companies.json");
+            string companiesJsonData = await File.ReadAllTextAsync(companiesFilePath);
+            Dictionary<string, Company>? companiesData = JsonConvert.DeserializeObject<Dictionary<string, Company>>(companiesJsonData);
+
+            // Ensure companies data exists
+            if (companiesData == null || companiesData.Count == 0)
+            {
+                message = "No companies found in JSON file.";
+                return;
+            }
+
+            // Insert companies into Firebase
+            foreach (var company in companiesData)
+            {
+                await FirebaseClient
+                    .Child("companies")
+                    .Child(company.Key)
+                    .PutAsync(JsonConvert.SerializeObject(company.Value));
+            }
+
+            message = "All companies inserted successfully!";
+
+
+
         }
         catch (Exception ex)
         {
@@ -61,7 +89,15 @@
     // Define the User class
     private class User
     {
-        public string Name { get; set; }
-        public List<string> payment_methods { get; set; }
+        public string? Name { get; set; }
+        public List<string>? payment_methods { get; set; }
     }
+
+
+    // Define the Company class
+    private class Company
+    {
+        public List<User>? users { get; set; }
+    }
+
 }

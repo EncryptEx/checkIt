@@ -1,0 +1,136 @@
+@page "/Dashboard/companies"
+@layout DashboardLayout
+
+@inject Firebase.Database.FirebaseClient FirebaseClient
+@rendermode InteractiveServer
+
+<PageTitle>Companies Dashboard</PageTitle>
+
+<h1>Payment Methods by Company</h1>
+
+@if (companyPaymentData != null && companyPaymentData.Count > 0)
+{
+    @foreach (var company in companyPaymentData)
+    {
+        <h3>@company.Key</h3>
+        <img src="@companyQuickChartUrls[company.Key]" alt="Payment Methods Chart for @company.Key" />
+    }
+}
+else
+{
+    <p>Loading data...</p>
+}
+
+@code {
+    private class User
+    {
+        public string? Name { get; set; }
+        public List<string>? payment_methods { get; set; }
+    }
+
+    private class Company
+    {
+        public List<User>? users { get; set; }
+    }
+
+    private Dictionary<string, Dictionary<string, int>> companyPaymentData = new();
+    private Dictionary<string, string> companyQuickChartUrls = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Console.WriteLine("Initializing component...");
+        await FetchCompanyPaymentData();
+    }
+
+    private async Task FetchCompanyPaymentData()
+    {
+        try
+        {
+            var companies = await FirebaseClient.Child("companies").OnceAsync<Company>();
+
+            if (companies == null)
+            {
+                Console.WriteLine("Firebase data is null.");
+                return;
+            }
+
+            foreach (var company in companies)
+            {
+                var companyName = company.Key;
+                var users = company.Object.users;
+
+                if (users == null) continue;
+
+                if (!companyPaymentData.ContainsKey(companyName))
+                    companyPaymentData[companyName] = new Dictionary<string, int>();
+
+                foreach (var user in users)
+                {
+                    if (user.payment_methods != null)
+                    {
+                        foreach (var method in user.payment_methods)
+                        {
+                            if (companyPaymentData[companyName].ContainsKey(method))
+                                companyPaymentData[companyName][method]++;
+                            else
+                                companyPaymentData[companyName][method] = 1;
+                        }
+                    }
+                }
+            }
+
+            GenerateCompanyChartUrls();
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error fetching Firebase data: {ex.Message}");
+        }
+    }
+
+    private void GenerateCompanyChartUrls()
+    {
+        if (companyPaymentData.Count == 0) return;
+
+        var colors = new List<string> { "#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF", "#FF9F40" };
+
+        foreach (var company in companyPaymentData)
+        {
+            var labels = string.Join(",", company.Value.Keys.Select(k => $"\"{k}\""));
+            var data = string.Join(",", company.Value.Values);
+            var colorSet = string.Join(",", company.Value.Keys.Select((_, i) => $"\"{colors[i % colors.Count]}\""));
+
+            var chartJson = $@"{{
+                type:'bar',
+                options:{{
+                    scales:{{
+                        y:{{
+                            ticks:{{
+                                stepSize: 1, 
+                                callback: function(value, index, values) {{
+                                    return Number.isInteger(value) ? value : '';
+                                }}
+                            }}
+                        }}
+                    }},
+                    legend: {{
+                        labels: {{
+                            fontColor: 'gray'
+                        }},
+                        backgroundColor: 'lightgray'
+                    }}
+                }},
+                data:{{
+                    labels:[{labels}],
+                    datasets:[{{
+                        label:'Payment Methods for {company.Key}',
+                        data:[{data}],
+                        backgroundColor:[{colorSet}]
+                    }}]
+                }}
+            }}";
+
+            companyQuickChartUrls[company.Key] = $"https://quickchart.io/chart?c={System.Web.HttpUtility.UrlEncode(chartJson)}";
+        }
+    }
+}

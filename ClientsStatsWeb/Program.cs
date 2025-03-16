@@ -7,6 +7,8 @@ using Firebase.Database;
 using ClientsStatsWeb.Services;
 using ClientsStatsWeb.Utils;
 
+using System.Net;
+
 DotEnv.Load(); // Loads .env file automatically
 
 
@@ -30,7 +32,7 @@ if (FirebaseApp.DefaultInstance == null)
     });
 }
 
-builder.Services.AddScoped<ICookie, Cookie>();
+builder.Services.AddScoped<ICookie, ClientsStatsWeb.Utils.Cookie>();
 
 builder.Services.AddHttpClient();
 builder.Services.AddHttpContextAccessor();
