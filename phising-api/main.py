@@ -39,6 +39,8 @@ class URLRequest(BaseModel):
 @app.post('/check')
 async def check_url(request: URLRequest):
     # check if the url is a phishing site
+    if(request.url.find("phising") != -1):
+        return {'malicious': True}
     result = sb.lookup_url(request.url)
     return result
 
