@@ -1,0 +1,90 @@
+{
+    "Ripley": {
+        "payment_methods": {
+            "Elo": "9",
+            "OXXO Pay": "2",
+            "RapiPago": "3",
+            "Apple Pay": "6"
+        },
+        "locations": {
+            "Mexico": "38",
+            "Colombia": "42"
+        }
+    },
+    "Amazon": {
+        "payment_methods": {
+            "Cabal": "7",
+            "Tarjeta Naranja": "10",
+            "PSE": "7",
+            "Ualá": "8"
+        },
+        "locations": {
+            "Colombia": "29",
+            "Ecuador": "35"
+        }
+    },
+    "Mercado Libre": {
+        "payment_methods": {
+            "Mastercard": "6",
+            "Diners Club": "3",
+            "Transferencia Bancaria": "7",
+            "Elo": "5",
+            "Boleto Bancário": "2"
+        },
+        "locations": {
+            "Peru": "24",
+            "Argentina": "17",
+            "Mexico": "42"
+        }
+    },
+    "Falabella": {
+        "payment_methods": {
+            "American Express": "7",
+            "Visa": "10",
+            "PayPal": "2"
+        },
+        "locations": {
+            "Argentina": "43",
+            "Colombia": "33",
+            "Brazil": "24",
+            "Mexico": "40"
+        }
+    },
+    "Despegar": {
+        "payment_methods": {
+            "Boleto Bancário": "5",
+            "Mercado Pago": "5",
+            "PayPal": "3",
+            "Tarjeta Naranja": "9"
+        },
+        "locations": {
+            "Colombia": "28",
+            "Mexico": "8"
+        }
+    },
+    "Latam Airlines": {
+        "payment_methods": {
+            "American Express": "8",
+            "PSE": "7",
+            "Tarjeta Naranja": "10",
+            "Visa": "6"
+        },
+        "locations": {
+            "Chile": "21",
+            "Ecuador": "9",
+            "Argentina": "47",
+            "Brazil": "27"
+        }
+    },
+    "Brandlive": {
+        "payment_methods": {
+            "Apple Pay": "6",
+            "American Express": "9"
+        },
+        "locations": {
+            "Colombia": "43",
+            "Peru": "32"
+        }
+    }
+}
+

@@ -1,0 +1,136 @@
+@page "/Dashboard/companies2"
+@layout DashboardLayout
+
+@inject Firebase.Database.FirebaseClient FirebaseClient
+@rendermode InteractiveServer
+
+<PageTitle>Companies Dashboard</PageTitle>
+
+<h1>Payment Methods by Company</h1>
+
+@if (companyPaymentData.Count > 0)
+{
+    <table>
+        @foreach (var company in companyPaymentData)
+        {
+            <tr>
+                <td>
+                    <h3>@company.Key</h3>
+                    <img src="@companyQuickChartUrls[company.Key]" alt="Payment Methods Chart for @company.Key" />
+
+                    <!-- Display LATAM Map Below the Chart -->
+                    <h4>Operating Countries</h4>
+                    <img src="@($"/data/maps/{company.Key}_latam_map.png")" alt="LATAM Country Map for @company.Key" />
+                </td>
+                <td style="vertical-align: middle; padding-left: 20px;">
+                    <h3>Total Dissatisfied Clients: @companyInsatisfiedClients[company.Key]</h3>
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>Loading data...</p>
+}
+
+@code {
+    private Dictionary<string, Dictionary<string, int>> companyPaymentData = new();
+    private Dictionary<string, string> companyQuickChartUrls = new();
+    private Dictionary<string, int> companyInsatisfiedClients = new(); // Stores dissatisfied clients count
+
+    // Define the Company class
+    private class Company
+    {
+        public Dictionary<string, string>? payment_methods { get; set; } // Payment method with user count
+        public Dictionary<string, string>? locations { get; set; }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Console.WriteLine("Initializing component...");
+        await FetchCompanyPaymentData();
+    }
+
+    private async Task FetchCompanyPaymentData()
+    {
+        try
+        {
+            var companies = await FirebaseClient.Child("companies2").OnceAsync<Company>();
+
+            if (companies == null || !companies.Any())
+            {
+                Console.WriteLine("Firebase data is null or empty.");
+                return;
+            }
+
+            foreach (var company in companies)
+            {
+                var companyName = company.Key;
+                var companyObj = company.Object;
+                
+                if (companyObj.payment_methods == null) continue;
+
+                if (!companyPaymentData.ContainsKey(companyName))
+                    companyPaymentData[companyName] = new Dictionary<string, int>();
+
+                int totalDissatisfiedClients = 0; // Calculate total dissatisfied clients from payment methods
+
+                foreach (var method in companyObj.payment_methods)
+                {
+                    int methodCount = int.Parse(method.Value);
+                    companyPaymentData[companyName][method.Key] = methodCount;
+                    totalDissatisfiedClients += methodCount; // Sum up payment method counts
+                }
+
+                // Store the calculated value instead of fetching from Firebase
+                companyInsatisfiedClients[companyName] = totalDissatisfiedClients;
+            }
+
+            GenerateCompanyChartUrls();
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error fetching Firebase data: {ex.Message}");
+        }
+    }
+
+    private void GenerateCompanyChartUrls()
+    {
+        if (companyPaymentData.Count == 0) return;
+
+        var colors = new List<string> { "#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF", "#FF9F40" };
+
+        foreach (var company in companyPaymentData)
+        {
+            var labels = string.Join(",", company.Value.Keys.Select(k => $"\"{k}\""));
+            var data = string.Join(",", company.Value.Values);
+            var colorSet = string.Join(",", company.Value.Keys.Select((_, i) => $"\"{colors[i % colors.Count]}\""));
+
+            var chartJson = $@"{{
+                type:'bar',
+                data:{{
+                    labels:[{labels}],
+                    datasets:[{{
+                        label:'Payment Methods for {company.Key}',
+                        data:[{data}],
+                        backgroundColor:[{colorSet}]
+                    }}]
+                }},
+                options:{{
+                    scales:{{
+                        y:{{
+                            beginAtZero:true,  // Ensures y-axis starts at 0
+                            ticks:{{
+                                stepSize: 1
+                            }}
+                        }}
+                    }}
+                }}
+            }}";
+
+            companyQuickChartUrls[company.Key] = $"https://quickchart.io/chart?c={System.Web.HttpUtility.UrlEncode(chartJson)}";
+        }
+    }
+}
