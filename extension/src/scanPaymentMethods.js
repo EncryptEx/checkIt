@@ -8,155 +8,110 @@ chrome.storage.local.get(['bankPool'], (result) => {
 });
 
 
-chrome.storage.local.get(['banks'], (result) => {
-    const savedBanks = result.banks || [];
-    const namesBanks = savedBanks.map(bank => bank.name.toLowerCase());
+// dom loaded event
+// timeout 2s
+setTimeout(() => {
+    chrome.storage.local.get(['banks'], (result) => {
+        const savedBanks = result.banks || [];
+        const namesBanks = savedBanks.map(bank => bank.name.toLowerCase());
 
-    fetch("http://127.0.0.1:8000/scan_page/", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            'html_content': btoa(unescape(encodeURIComponent(pagecontent))),
-            'url': window.location.href,
-            'user_payment_methods': namesBanks
-        }),
-    })
-        .then((response) => response.json())
-        .then((data) => {
-            console.log("Is the page checkout?: ", data.is_checkout_page);
-            console.log("Payment methods: ", data.payment_methods);
-            if(!data.is_checkout_page){
-                return;
-            }
-            if (
-                !data.payment_methods ||
-                !Array.isArray(data.payment_methods.user_has) ||
-                data.payment_methods.user_has.length === 0
-            ) {
-                console.log("No payment methods found. Displaying similar products button.");
-        
-                // Get the product name from the response (fallback to document.title)
-                const productName = data.product ? data.product : document.title;
-        
-                // Create an HTML snippet for the similar products button
-                const html = `
-                    <div id="similar-products-container" style="position: fixed; top: 20px; left: 20px; background: #fff; padding: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.3); z-index: 10000;">
-                        <button id="similar-products-button" style="padding: 10px; font-size: 16px; cursor: pointer;">Look for similar products</button>
+        fetch("http://127.0.0.1:8000/scan_page/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                'html_content': btoa(unescape(encodeURIComponent(pagecontent))),
+                'url': window.location.href,
+                'user_payment_methods': namesBanks
+            }),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log("Is the page checkout?: ", data.is_checkout_page);
+                console.log("Payment methods: ", data.payment_methods);
+                if (!data.is_checkout_page) {
+                    return;
+                }
+                if (
+                    !data.payment_methods ||
+                    !Array.isArray(data.payment_methods.user_has) ||
+                    data.payment_methods.user_has.length === 0
+                ) {
+                    console.log("No payment methods found. Displaying similar products button.");
+
+                    // Get the product name from the response (fallback to document.title)
+                    const productName = data.product ? data.product : document.title;
+
+                    // Create an HTML snippet for the similar products button
+                    const html = `
+                    <div id="similar-products-container" style="position: fixed; top: 20px; left: 20px; background: #fff; padding: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.3); z-index: 10000;font-family:'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji';">
+                        <p style="margin: 0; font-size: 16px;">None of your payment methods are available at this checkout.</p>
+                        <button id="similar-products-button" style="padding: 10px; font-size: 16px; cursor: pointer; border: 1px solid rgb(88, 81, 81); border-radius: 5px;">Look for similar products</button>
                     </div>
                 `;
-        
-                // Insert the HTML into the page
-                document.body.insertAdjacentHTML('beforeend', html);
-                const similarProductsButton = document.getElementById('similar-products-button');
-                similarProductsButton.addEventListener("click", () => {
-                    fetch("http://127.0.0.1:8000/scanget_similar_products_page/", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({
-                            product: productName,
-                            user_payment_methods: namesBanks,
-                            original_url: window.location.href,
-                        }),
-                    })
-                    .then((response) => response.json())
-                    .then((similarProducts) => {
-                        console.log("Similar products:", similarProducts);
-                        // Pass the returned list (similarProducts) to display the overlay with thumbnails
-                        displaySimilarProducts(similarProducts);
-                });
-                // alert backend that user doesn't have any compatible payment methods
-                fetch("http://127.0.0.1:8000/no_payment_methods/", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        country: "México",
-                        payment_method: namesBanks,
-                        original_url: window.location.href,
-                    }),
-                })
-                .then((response) => response.json())
-                .then((data) => {
-                    console.log("NOTIFY: Response from backend:", data);
-                })
-                .catch((error) => {
-                    console.error("Error fetching similar products:", error);
-                });
-                
 
-
-        
-                // Exit early since there are no available methods
-                return;
-                });
-            }
-            
-            let finalMethods = [];
-            // this is where magic happens
-            const userHasPromises = data.payment_methods.user_has.map((element) => {
-                return new Promise((resolve, reject) => {
-                    // try to find the url of the bank in saved url banks, 
-                    // else use /get_bank_pic
-                    chrome.storage.local.get(['bankPool'], (result) => {
-                        let bankPool = result.bankPool || [];
-                        const bank = bankPool.find(bank => bank.name.toLowerCase() === element.toLowerCase());
-
-                        if (bank) {
-                            finalMethods.push({ name: element, url: bank.url });
-                            resolve();
-                        } else {
-                            // fetch /get_bank_pic
-                            fetch("http://127.0.0.1:8000/get_bank_pic/" + element, {
-                                method: "GET",
-                                headers: {
-                                    "Content-Type": "application/json",
-                                },
+                    // Insert the HTML into the page
+                    document.body.insertAdjacentHTML('beforeend', html);
+                    const similarProductsButton = document.getElementById('similar-products-button');
+                    similarProductsButton.addEventListener("click", () => {
+                        fetch("http://127.0.0.1:8000/scanget_similar_products_page/", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({
+                                product: productName,
+                                user_payment_methods: namesBanks,
+                                original_url: window.location.href,
+                            }),
+                        })
+                            .then((response) => response.json())
+                            .then((similarProducts) => {
+                                console.log("Similar products:", similarProducts);
+                                // Pass the returned list (similarProducts) to display the overlay with thumbnails
+                                displaySimilarProducts(similarProducts);
+                            });
+                        // alert backend that user doesn't have any compatible payment methods
+                        fetch("http://127.0.0.1:8000/no_payment_methods/", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({
+                                company_name: window.location.hostname.includes('.') ? window.location.hostname.split('.').slice(-2, -1)[0] : window.location.hostname,
+                                country: "México",
+                                payment_method: namesBanks,
+                            }),
+                        })
+                            .then((response) => response.json())
+                            .then((data) => {
+                                console.log("NOTIFY: Response from backend:", data);
                             })
-                                .then((response) => response.json())
-                                .then((data) => {
-                                    let bankUrl = data.url;
-                                    console.log("NEW Bank URL: ", bankUrl);
+                            .catch((error) => {
+                                console.error("Error notifying no payment methods:", error);
+                            });
 
-                                    // save the new bank url
-                                    chrome.storage.local.set({
-                                        bankPool: [...bankPool, { name: element, url: bankUrl }]
-                                    });
 
-                                    finalMethods.push({ name: element, url: bankUrl });
-                                    resolve();
-                                })
-                                .catch((error) => {
-                                    console.error("Failed to fetch bank URL", error);
-                                    reject(error);
-                                });
-                        }
+
+
+                        // Exit early since there are no available methods
+                        return;
                     });
-                });
-            });
+                }
 
-            console.log("Final methods: ", finalMethods);
-
-            const low_payment_methods_w_user = data.payment_methods.user_has.map(method => method.toLowerCase());
-
-            let not_available = [];
-            const availablePromises = namesBanks.map((element) => {
-                return new Promise((resolve, reject) => {
-                    // if not in user_has, add to not_available
-                    console.log("Element: ", element);
-                    console.log("Low payment methods: ", low_payment_methods_w_user);
-                    if (!low_payment_methods_w_user.includes(element)) {
+                let finalMethods = [];
+                // this is where magic happens
+                const userHasPromises = data.payment_methods.user_has.map((element) => {
+                    return new Promise((resolve, reject) => {
+                        // try to find the url of the bank in saved url banks, 
+                        // else use /get_bank_pic
                         chrome.storage.local.get(['bankPool'], (result) => {
                             let bankPool = result.bankPool || [];
                             const bank = bankPool.find(bank => bank.name.toLowerCase() === element.toLowerCase());
 
                             if (bank) {
-                                not_available.push({ name: element, url: bank.url });
-                                console.log("NOT AV. OLD Bank URL: ", bank.url);
+                                finalMethods.push({ name: element, url: bank.url });
                                 resolve();
                             } else {
                                 // fetch /get_bank_pic
@@ -169,14 +124,14 @@ chrome.storage.local.get(['banks'], (result) => {
                                     .then((response) => response.json())
                                     .then((data) => {
                                         let bankUrl = data.url;
-                                        console.log("NOT AV. NEW Bank URL: ", bankUrl);
+                                        console.log("NEW Bank URL: ", bankUrl);
 
                                         // save the new bank url
                                         chrome.storage.local.set({
                                             bankPool: [...bankPool, { name: element, url: bankUrl }]
                                         });
 
-                                        not_available.push({ name: element, url: bankUrl });
+                                        finalMethods.push({ name: element, url: bankUrl });
                                         resolve();
                                     })
                                     .catch((error) => {
@@ -185,29 +140,79 @@ chrome.storage.local.get(['banks'], (result) => {
                                     });
                             }
                         });
-                    } else {
-                        resolve();
-                    }
+                    });
                 });
+
+                console.log("Final methods: ", finalMethods);
+
+                const low_payment_methods_w_user = data.payment_methods.user_has.map(method => method.toLowerCase());
+
+                let not_available = [];
+                const availablePromises = namesBanks.map((element) => {
+                    return new Promise((resolve, reject) => {
+                        // if not in user_has, add to not_available
+                        console.log("Element: ", element);
+                        console.log("Low payment methods: ", low_payment_methods_w_user);
+                        if (!low_payment_methods_w_user.includes(element)) {
+                            chrome.storage.local.get(['bankPool'], (result) => {
+                                let bankPool = result.bankPool || [];
+                                const bank = bankPool.find(bank => bank.name.toLowerCase() === element.toLowerCase());
+
+                                if (bank) {
+                                    not_available.push({ name: element, url: bank.url });
+                                    console.log("NOT AV. OLD Bank URL: ", bank.url);
+                                    resolve();
+                                } else {
+                                    // fetch /get_bank_pic
+                                    fetch("http://127.0.0.1:8000/get_bank_pic/" + element, {
+                                        method: "GET",
+                                        headers: {
+                                            "Content-Type": "application/json",
+                                        },
+                                    })
+                                        .then((response) => response.json())
+                                        .then((data) => {
+                                            let bankUrl = data.url;
+                                            console.log("NOT AV. NEW Bank URL: ", bankUrl);
+
+                                            // save the new bank url
+                                            chrome.storage.local.set({
+                                                bankPool: [...bankPool, { name: element, url: bankUrl }]
+                                            });
+
+                                            not_available.push({ name: element, url: bankUrl });
+                                            resolve();
+                                        })
+                                        .catch((error) => {
+                                            console.error("Failed to fetch bank URL", error);
+                                            reject(error);
+                                        });
+                                }
+                            });
+                        } else {
+                            resolve();
+                        }
+                    });
+                });
+
+                // Wait for all promises to resolve
+                Promise.all([...userHasPromises, ...availablePromises])
+                    .then(() => {
+                        console.log("Final not available: ", not_available);
+                        // open dialog of available payment methods
+                        if (finalMethods.length !== 0) {
+                            openDialog(finalMethods, not_available);
+                        }
+                    }).catch((error) => {
+                        console.error("Failed to process payment methods", error);
+                    });
+            })
+            .catch((error) => {
+                console.error("Failed to fetch bank URL", error);
             });
+    });
 
-            // Wait for all promises to resolve
-            Promise.all([...userHasPromises, ...availablePromises])
-                .then(() => {
-                    console.log("Final not available: ", not_available);
-                    // open dialog of available payment methods
-                    if(finalMethods.length !== 0){
-                        openDialog(finalMethods, not_available);
-                    }
-                }).catch((error) => {
-                    console.error("Failed to process payment methods", error);
-                });
-        })
-        .catch((error) => {
-            console.error("Failed to fetch bank URL", error);
-        });
-});
-
+}, 2000);
 function openDialog(finalMethods, not_available) {
     const dialog = document.createElement('dialog');
     dialog.innerHTML = `
@@ -336,14 +341,14 @@ function displaySimilarProducts(links) {
     container.style.justifyContent = "center";
     container.style.position = "relative";
     container.style.gap = "10px";
-    
+
     // For each URL in the list, create a thumbnail and link
     links.forEach(link => {
         const thumbContainer = document.createElement("div");
         thumbContainer.style.display = "flex";
         thumbContainer.style.flexDirection = "column";
         thumbContainer.style.alignItems = "center";
-        
+
         // Generate a thumbnail using the mshots API
         const thumbnailUrl = "https://s.wordpress.com/mshots/v1/" + encodeURIComponent(link) + "?w=300&h=200";
         const img = document.createElement("img");
@@ -354,7 +359,7 @@ function displaySimilarProducts(links) {
         img.style.objectFit = "cover";
         img.style.border = "1px solid #ccc";
         img.style.borderRadius = "5px";
-        
+
         // Create an anchor element for the URL below the image
         const anchor = document.createElement("a");
         anchor.href = link;
@@ -365,12 +370,12 @@ function displaySimilarProducts(links) {
         anchor.style.fontSize = "12px";
         anchor.style.color = "#007BFF";
         anchor.style.textDecoration = "none";
-        
+
         thumbContainer.appendChild(img);
         thumbContainer.appendChild(anchor);
         container.appendChild(thumbContainer);
     });
-    
+
     // Add a close button in the upper right corner of the overlay
     const closeButton = document.createElement("button");
     closeButton.textContent = "Close";
@@ -384,7 +389,7 @@ function displaySimilarProducts(links) {
         document.body.removeChild(overlay);
     });
     overlay.appendChild(closeButton);
-    
+
     overlay.appendChild(container);
     document.body.appendChild(overlay);
 }

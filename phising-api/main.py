@@ -17,6 +17,16 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
 
+import random
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+import time
+
 
 # Customize the title of the Swagger documentation
 app = FastAPI(title="Phishing URL Checker API")
@@ -65,14 +75,17 @@ def no_available_methods(request: Company):
     by 1 each in a transactional way.
     """
     
+    sanitized_company_name = request.company_name.replace('.', '_')
+
+    
     for c in request.payment_method:
-        ref = ref_companies.child(request.company_name).child("payment_methods").child(c)
+        ref = ref_companies.child(sanitized_company_name).child("payment_methods").child(c)
         ref.transaction(lambda x: x + 1 if x else 1)
 
-        ref = ref_companies.child(request.company_name).child("locations").child(country)
+        ref = ref_companies.child(sanitized_company_name).child("locations").child(request.country)
         ref.transaction(lambda x: x + 1 if x else 1)
         
-        ref = ref_companies.child(request.company_name).child("num_clients_insatisfied")
+        ref = ref_companies.child(sanitized_company_name).child("num_clients_insatisfied")
         ref.transaction(lambda x: x + 1 if x else 1)
     
     return {"status": True}
@@ -170,3 +183,32 @@ def get_similar_products(request: SimilarProducts):
 
     return n
 
+
+
+@app.get("/get_website_screenshot/{url}")
+def get_website_screenshot(url: str):
+    screenshot_path = f"screenshots/{urlparse(url).netloc}.png"
+    
+    # Check if the screenshot already exists
+    if os.path.exists(screenshot_path):
+        with open(screenshot_path, "rb") as f:
+            return f.read()
+    
+    # Open the website with selenium if screenshot does not exist
+
+
+    # Initialize the Chrome driver using a Service object
+    service = Service(ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=service)
+    driver.get(base64.b64decode(url).decode('utf-8'))
+    os.makedirs(os.path.dirname(screenshot_path), exist_ok=True)
+    driver.save_screenshot(screenshot_path)
+    driver.quit()
+    
+    # Return the screenshot
+    with open(screenshot_path, "rb") as f:
+        return f.read()
+    
+    return {"status": True}
+    
+    
