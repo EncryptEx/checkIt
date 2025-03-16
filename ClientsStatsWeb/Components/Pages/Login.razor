@@ -53,7 +53,7 @@
                 await cookie.SetValue("userEmail", result.mail);
 
                 await Task.Delay(2000);
-                Navigation.NavigateTo("/"); // Redirect to your main page after login
+                Navigation.NavigateTo("/Dashboard"); // Redirect to your main page after login
             }
             else
             {

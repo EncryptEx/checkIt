@@ -1,4 +1,4 @@
-@page "/Dashboard/companies2"
+@page "/Dashboard/companies"
 @layout DashboardLayout
 
 @inject Firebase.Database.FirebaseClient FirebaseClient
@@ -6,7 +6,95 @@
 
 <PageTitle>Companies Dashboard</PageTitle>
 
-<h1>Payment Methods by Company</h1>
+<style>
+    body {
+        font-family: 'Roboto', sans-serif; /* Modern font */
+        background-color: #f4f7fa;
+    }
+
+    h1 {
+        text-align: center;
+        color: #0056b3;
+        font-size: 2.5em;
+        margin-bottom: 1em;
+    }
+
+    .centered-title {
+        text-align: center;
+        text-shadow: 3px 3px 6px rgba(0, 0, 139, 0.3); /* Softer shadow */
+        color: #0056b3; /* Slightly darker blue for better readability */
+        font-size: 3em;
+        font-weight: 700; /* Bold for emphasis */
+        margin-bottom: 1.5em;
+        letter-spacing: 1px; /* Slight spacing for elegance */
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0 auto;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    tr {
+        border-bottom: 1px solid #ddd;
+    }
+
+    td {
+        padding: 20px;
+        vertical-align: top;
+    }
+
+    .company-name {
+        color: #111111; /* Distinctive color for company name */
+        font-family: 'Montserrat', sans-serif; /* Different modern font */
+        font-size: 2em;
+        margin-bottom: 0.5em;
+    }
+
+    .info-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+        .info-container img {
+            max-width: 48%; /* Adjusted to fit side by side */
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 5px;
+        }
+
+    .details {
+        margin-top: 1em;
+        text-align: center;
+    }
+
+    h3 {
+        color: #333;
+        font-size: 1.5em;
+        margin-bottom: 0.5em;
+    }
+
+    h4 {
+        color: #555;
+        font-size: 1.2em;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+    }
+
+    p {
+        text-align: center;
+        font-size: 1.2em;
+        color: #888;
+    }
+</style>
+
+<h1 class="centered-title">Payment Methods by Company</h1>
 
 @if (companyPaymentData.Count > 0)
 {
@@ -15,15 +103,15 @@
         {
             <tr>
                 <td>
-                    <h3>@company.Key</h3>
-                    <img src="@companyQuickChartUrls[company.Key]" alt="Payment Methods Chart for @company.Key" />
-
-                    <!-- Display LATAM Map Below the Chart -->
-                    <h4>Operating Countries</h4>
-                    <img src="@($"/data/maps/{company.Key}_latam_map.png")" alt="LATAM Country Map for @company.Key" />
-                </td>
-                <td style="vertical-align: middle; padding-left: 20px;">
-                    <h3>Total Dissatisfied Clients: @companyInsatisfiedClients[company.Key]</h3>
+                    <div class="company-name">@company.Key</div>
+                    <div class="info-container">
+                        <img src="@companyQuickChartUrls[company.Key]" alt="Payment Methods Chart for @company.Key" />
+                        <img src="@($"/data/maps/{company.Key}_latam_map.png")" alt="LATAM Country Map for @company.Key" />
+                    </div>
+                    <div class="details">
+                        <h3>Total Dissatisfied Clients: @companyInsatisfiedClients[company.Key]</h3>
+                        <h3>Incoming redirected users: @companyRedirectedUsers[company.Key]</h3>
+                    </div>
                 </td>
             </tr>
         }
@@ -38,12 +126,14 @@ else
     private Dictionary<string, Dictionary<string, int>> companyPaymentData = new();
     private Dictionary<string, string> companyQuickChartUrls = new();
     private Dictionary<string, int> companyInsatisfiedClients = new(); // Stores dissatisfied clients count
+    private Dictionary<string, int> companyRedirectedUsers = new(); // Stores redirected users count
 
     // Define the Company class
     private class Company
     {
         public Dictionary<string, string>? payment_methods { get; set; } // Payment method with user count
         public Dictionary<string, string>? locations { get; set; }
+        public int number_of_redirected_users { get; set; }
     }
 
     protected override async Task OnInitializedAsync()
@@ -85,6 +175,8 @@ else
 
                 // Store the calculated value instead of fetching from Firebase
                 companyInsatisfiedClients[companyName] = totalDissatisfiedClients;
+
+                companyRedirectedUsers[companyName] = companyObj.number_of_redirected_users;
             }
 
             GenerateCompanyChartUrls();

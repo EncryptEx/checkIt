@@ -4,15 +4,77 @@
 @inject Firebase.Database.FirebaseClient FirebaseClient
 @rendermode InteractiveServer
 
-
 <PageTitle>Dashboard</PageTitle>
 
-<h1>Dashboard</h1>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Professional font */
+        background-color: #f4f7fa; /* Light background for contrast */
+    }
+
+    .centered-title {
+        text-align: center;
+        text-shadow: 3px 3px 6px rgba(0, 0, 139, 0.3); /* Softer shadow */
+        color: #0056b3; /* Slightly darker blue for better readability */
+        font-size: 3em;
+        font-weight: 700; /* Bold for emphasis */
+        margin-bottom: 1.5em;
+        letter-spacing: 1px; /* Slight spacing for elegance */
+    }
+
+    .centered-text {
+        text-align: center;
+        font-size: 1.5em;
+        color: #555; /* Medium gray for a softer look */
+        margin-bottom: 1.5em;
+        line-height: 1.6; /* Improved readability */
+    }
+
+    .chart-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2.5em;
+        padding: 1em;
+        background-color: #fff; /* White background for the chart */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        border-radius: 8px; /* Rounded corners */
+    }
+
+    .total-clients {
+        text-align: center;
+        font-size: 2.2em;
+        color: #28a745; /* Green text */
+        font-weight: bold;
+        margin-top: 1em;
+        padding: 0.5em;
+        background-color: #e9f7ef; /* Light green background for emphasis */
+        border-radius: 5px; /* Rounded corners */
+    }
+
+    p {
+        text-align: center;
+        font-size: 1.2em;
+        color: #888; /* Light gray for loading text */
+    }
+</style>
+
+<div class="centered-title">
+    Welcome back, test
+</div>
+
+<div class="centered-text">
+    Here's the latest update of most requested missing payment methods of all companies:
+</div>
 
 @if (paymentData != null)
 {
-    <img src="@quickChartUrl" alt="Payment Methods Chart" />
-   
+    <div class="chart-container">
+        <img src="@quickChartUrl" alt="Payment Methods Chart" />
+    </div>
+
+    <div class="total-clients">
+        Total clients redirected to your business: 1553
+    </div>
 }
 else
 {
@@ -33,6 +95,8 @@ else
         Console.WriteLine("Initializing component...");
         await FetchPaymentData();
     }
+
+    private int totalClients = 0; // Add a field for total clients
 
     private async Task FetchPaymentData()
     {
@@ -63,6 +127,12 @@ else
             }
 
             GenerateChartUrl();
+
+            if (paymentData != null)
+            {
+                totalClients = paymentData.Values.Sum();
+            }
+
             StateHasChanged();
         }
         catch (Exception ex)
@@ -86,7 +156,7 @@ else
                 scales:{{
                     y:{{
                         ticks:{{
-                            stepSize: 1, 
+                            stepSize: 1,
                             callback: function(value, index, values) {{
                                 return Number.isInteger(value) ? value : '';
                             }}
@@ -112,5 +182,5 @@ else
 
         quickChartUrl = $"https://quickchart.io/chart?c={System.Web.HttpUtility.UrlEncode(chartJson)}";
     }
-   
+
 }
