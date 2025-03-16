@@ -1,0 +1,132 @@
+﻿@page "/login"
+@rendermode InteractiveServer
+@inject FirebaseAuthService AuthService
+@inject NavigationManager Navigation
+@inject ICookie cookie
+
+<div class="login-container">
+    <h2>Log In to Your Account</h2>
+
+    <div class="form-group">
+        <label>Email</label>
+        <input type="email" @bind="Email" required />
+    </div>
+
+    <div class="form-group">
+        <label>Password</label>
+        <input type="password" @bind="Password" required />
+    </div>
+
+    <button @onclick="LoginUser" class="login-button" disabled="@IsLoading">
+        @(IsLoading ? "Logging in..." : "Log In")
+    </button>
+
+    @if (!string.IsNullOrEmpty(Message))
+    {
+        <p class="message">@Message</p>
+    }
+
+    <p class="register-link">
+        Don't have an account? <a href="/register">Register here</a>
+    </p>
+</div>
+
+@code {
+    private string Email { get; set; } = "";
+    private string Password { get; set; } = "";
+    private string Message = "";
+    private bool IsLoading = false;
+
+    private async Task LoginUser()
+    {
+        IsLoading = true;
+        Message = "";
+
+        try
+        {
+            var result = await AuthService.LoginUser(Email, Password); // Call your login service
+            if (!result.token.StartsWith("Error")) // Check for successful login
+            {
+                Message = "Login successful! Redirecting...";
+
+                await cookie.SetValue("userId", result.token);
+                await cookie.SetValue("userEmail", result.mail);
+
+                await Task.Delay(2000);
+                Navigation.NavigateTo("/"); // Redirect to your main page after login
+            }
+            else
+            {
+
+                Message = result.token; // Display error message
+            }
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+}
+
+<style>
+    /*  Mostly the same as the registration page styles,
+            but with a different button color and the addition of the register link styles */
+    .login-container {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background: #f4f4f4;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+        text-align: left;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .login-button {
+        width: 100%;
+        padding: 10px;
+        background: #28a745; /* Green button for login */
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+    }
+
+        .login-button:hover {
+            background: #218838;
+        }
+
+    .message {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    .register-link {
+        margin-top: 20px;
+    }
+
+        .register-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+            .register-link a:hover {
+                text-decoration: underline;
+            }
+</style>

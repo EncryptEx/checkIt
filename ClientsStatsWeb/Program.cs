@@ -4,6 +4,8 @@ using FirebaseAdmin;
 using Google.Apis.Auth.OAuth2;
 using dotenv.net;
 using Firebase.Database;
+using ClientsStatsWeb.Services;
+using ClientsStatsWeb.Utils;
 
 DotEnv.Load(); // Loads .env file automatically
 
@@ -28,13 +30,17 @@ if (FirebaseApp.DefaultInstance == null)
     });
 }
 
+builder.Services.AddScoped<ICookie, Cookie>();
+
+builder.Services.AddHttpClient();
+builder.Services.AddHttpContextAccessor();
+
 // Register Firebase Realtime Database client as a singleton service
 builder.Services.AddSingleton(provider => new FirebaseClient(firebaseDatabaseUrl));
 
 
 // Add Firebase Authentication Service
 builder.Services.AddSingleton<FirebaseAuthService>();
-
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
