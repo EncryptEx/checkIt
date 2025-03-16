@@ -10,11 +10,24 @@
 
 @if (companyPaymentData.Count > 0)
 {
-    @foreach (var company in companyPaymentData)
-    {
-        <h3>@company.Key</h3>
-        <img src="@companyQuickChartUrls[company.Key]" alt="Payment Methods Chart for @company.Key" />
-    }
+    <table>
+        @foreach (var company in companyPaymentData)
+        {
+            <tr>
+                <td>
+                    <h3>@company.Key</h3>
+                    <img src="@companyQuickChartUrls[company.Key]" alt="Payment Methods Chart for @company.Key" />
+
+                    <!-- Display LATAM Map Below the Chart -->
+                    <h4>Operating Countries</h4>
+                    <img src="@($"/data/maps/{company.Key}_latam_map.png")" alt="LATAM Country Map for @company.Key" />
+                </td>
+                <td style="vertical-align: middle; padding-left: 20px;">
+                    <h3>Total Dissatisfied Clients: @companyInsatisfiedClients[company.Key]</h3>
+                </td>
+            </tr>
+        }
+    </table>
 }
 else
 {
@@ -22,19 +35,17 @@ else
 }
 
 @code {
-    
     private Dictionary<string, Dictionary<string, int>> companyPaymentData = new();
     private Dictionary<string, string> companyQuickChartUrls = new();
+    private Dictionary<string, int> companyInsatisfiedClients = new(); // Stores dissatisfied clients count
 
     // Define the Company class
     private class Company
     {
         public Dictionary<string, string>? payment_methods { get; set; } // Payment method with user count
-        public string? num_clients_insatisfied { get; set; }
         public Dictionary<string, string>? locations { get; set; }
     }
 
-  
     protected override async Task OnInitializedAsync()
     {
         Console.WriteLine("Initializing component...");
@@ -47,7 +58,7 @@ else
         {
             var companies = await FirebaseClient.Child("companies2").OnceAsync<Company>();
 
-             if (companies == null || !companies.Any())
+            if (companies == null || !companies.Any())
             {
                 Console.WriteLine("Firebase data is null or empty.");
                 return;
@@ -56,17 +67,24 @@ else
             foreach (var company in companies)
             {
                 var companyName = company.Key;
-                var paymentMethods = company.Object.payment_methods;
-
-                if (paymentMethods == null) continue;
+                var companyObj = company.Object;
+                
+                if (companyObj.payment_methods == null) continue;
 
                 if (!companyPaymentData.ContainsKey(companyName))
                     companyPaymentData[companyName] = new Dictionary<string, int>();
 
-                foreach (var method in paymentMethods)
+                int totalDissatisfiedClients = 0; // Calculate total dissatisfied clients from payment methods
+
+                foreach (var method in companyObj.payment_methods)
                 {
-                    companyPaymentData[companyName][method.Key] = int.Parse(method.Value);
+                    int methodCount = int.Parse(method.Value);
+                    companyPaymentData[companyName][method.Key] = methodCount;
+                    totalDissatisfiedClients += methodCount; // Sum up payment method counts
                 }
+
+                // Store the calculated value instead of fetching from Firebase
+                companyInsatisfiedClients[companyName] = totalDissatisfiedClients;
             }
 
             GenerateCompanyChartUrls();
@@ -103,7 +121,7 @@ else
                 options:{{
                     scales:{{
                         y:{{
-                            beginAtZero:true,
+                            beginAtZero:true,  // Ensures y-axis starts at 0
                             ticks:{{
                                 stepSize: 1
                             }}
