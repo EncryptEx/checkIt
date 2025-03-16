@@ -118,7 +118,7 @@ class SimilarProducts(BaseModel):
 def get_similar_products(request: SimilarProducts):
     product_name = request.product
     bank_name = " ".join(request.user_payment_methods)
-    query = f"{product_name} {bank_name}"
+    query = f"{product_name}"
     results = list(search(query, num_results=5))
     no_url = request.original_url
     n = [l for l in results if urlparse(l).netloc != urlparse(no_url).netloc and "search" not in l]
