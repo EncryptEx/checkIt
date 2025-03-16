@@ -59,6 +59,10 @@ async def get_domain(bank_name):
         
     return {'domain': bank_name + ".com"}
 
+@app.get("/get_bank_pic/{bank_name}")
+async def get_bank_pic(bank_name):
+    website = await get_domain(bank_name)
+    return {'url' : "https://img.logo.dev/"+website['domain']+"?token=pk_D70v6BA4Q-qHCW8Jkx9eaA&size=149&retina=true"}
 
 class CheckoutPageRequest(BaseModel):
     html_content: str
@@ -88,7 +92,8 @@ async def scan_page(request: CheckoutPageRequest):
                 "pago", "tarjeta de crédito", "envío", "facturación", "resumen del pedido", "realizar pedido", "completar pedido",
                 "pagamento", "cartão de crédito", "envio", "faturamento", "resumo do pedido", "fazer pedido", "completar pedido",
                 "paiement", "carte de crédit", "expédition", "facturation", "résumé de la commande", "passer commande", "compléter la commande",
-                "pagamento", "cartão de crédito", "expedição", "faturamento", "resumo do pedido", "fazer pedido", "completar pedido"]
+                "pagamento", "cartão de crédito", "expedição", "faturamento", "resumo do pedido", "fazer pedido", "completar pedido",
+                "pay", "credit card", "shipping", "billing", "order summary", "place order", "complete order", "bank", "banco", "VAT"]
                 
     is_checkout_page = any(keyword in text_content for keyword in keywords)
     

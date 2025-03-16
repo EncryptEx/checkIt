@@ -29,5 +29,11 @@
     ],
     "background": {
         "service_worker": "firstTime.js"
-      }
+    },
+    "web_accessible_resources": [
+        {
+            "resources": ["img/chill.png", "img/no-chill.png"],
+            "matches": ["<all_urls>"]
+        }
+    ]
 }
