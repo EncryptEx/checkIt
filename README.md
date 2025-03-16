@@ -36,9 +36,9 @@ The portal is built using Blazor, a powerful framework for building interactive 
 
 ---
 
-## Frameworks and Technologies
+## 🛠️ Frameworks and Technologies
 
-### Chrome Extensions
+Chrome Extensions
 
 ### Programming Languages
 - Python
