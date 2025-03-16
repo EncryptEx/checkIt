@@ -22,7 +22,7 @@ from firebase_admin import db
 
 
 # Customize the title of the Swagger documentation
-app = FastAPI(title="Phishing URL Checker API")
+app = FastAPI(title="CheckIt API")
 
 # load dotenv
 from dotenv import load_dotenv
@@ -61,8 +61,10 @@ class Company(BaseModel):
 @app.post("/no_payment_methods")
 def no_available_methods(request: Company):
     """
-    Increments (or creates if not present) the specified company's:
-      - country in 'locations'
+    Notifies the DB that a company has lost a client due to not having any of their payment methods available.
+      What it does in detail:
+      Passing 
+      - country in 'locations' and each
       - payment_method in 'payment_methods'
       - num_clients_insatisfied
     by 1 each in a transactional way.
@@ -89,6 +91,21 @@ class URLRequest(BaseModel):
 
 @app.post('/check')
 async def check_url(request: URLRequest):
+    
+    """
+    Check if a URL is a phishing site or not.
+
+    **Input:**
+    - url (str): URL to check.
+    
+
+    **Returns:**
+    A JSON with:
+    - malicious: True if the URL is a phishing site, False
+    otherwise
+    
+    
+    """
     # check if the url is a phishing site
     if(request.url.find("phising") != -1):
         return {'malicious': True}
@@ -99,6 +116,21 @@ async def check_url(request: URLRequest):
 
 @app.get('/get_domain/{bank_name}')
 async def get_domain(bank_name):
+    """
+    Get the domain of a bank based on its name.
+    
+
+    **Input:**
+    - bank_name (str): Name of the bank.
+    
+    
+    **Returns:**
+    A JSON with:
+    - domain: Domain of the bank.
+    
+    
+    """
+    
     query = bank_name + " web"
     query = "banco " + query if "banc" not in query or "bank" not in query else query
 
@@ -114,6 +146,20 @@ async def get_domain(bank_name):
 
 @app.get("/get_bank_pic/{bank_name}")
 async def get_bank_pic(bank_name):
+    """
+    Get the logo of a bank based on its name.
+    
+    
+    **Input:**
+    - bank_name (str): Name of the bank.
+    
+    
+    **Returns:**
+    A JSON with:
+    - url: URL of the bank's logo.
+    
+    """
+    
     website = await get_domain(bank_name)
     return {'url' : "https://img.logo.dev/"+website['domain']+"?token=pk_D70v6BA4Q-qHCW8Jkx9eaA&size=149&retina=true"}
 
@@ -166,6 +212,17 @@ class SimilarProducts(BaseModel):
 
 @app.post("/scanget_similar_products_page/")
 def get_similar_products(request: SimilarProducts):
+    """
+    Get similar products to the one in the checkout page.
+    
+    **Input:**
+    - product (str): Product name.
+    
+    **Returns:**
+    A JSON with:
+    - products: List of similar products
+    """
+    
     product_name = request.product
     bank_name = " ".join(request.user_payment_methods)
     query = f"{product_name}"
