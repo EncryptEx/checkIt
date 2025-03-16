@@ -7,6 +7,7 @@ chrome.storage.local.get(['bankPool'], (result) => {
     }
 });
 
+
 chrome.storage.local.get(['banks'], (result) => {
     const savedBanks = result.banks || [];
     const namesBanks = savedBanks.map(bank => bank.name.toLowerCase());
@@ -37,7 +38,7 @@ chrome.storage.local.get(['banks'], (result) => {
                 console.log("No payment methods found. Displaying similar products button.");
         
                 // Get the product name from the response (fallback to document.title)
-                const productName = data.payment_methods.product ? data.payment_methods.product : document.title;
+                const productName = data.product ? data.product : document.title;
         
                 // Create an HTML snippet for the similar products button
                 const html = `
@@ -66,50 +67,33 @@ chrome.storage.local.get(['banks'], (result) => {
                         console.log("Similar products:", similarProducts);
                         // Pass the returned list (similarProducts) to display the overlay with thumbnails
                         displaySimilarProducts(similarProducts);
-
-
-                        // alert backend that user doesn't have any compatible payment methods
-                        fetch("http://127.0.0.1:8000/no_payment_methods/", {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
-                            body: JSON.stringify({
-                                country: "México",
-                                user_payment_methods: namesBanks,
-                                original_url: window.location.href,
-                            }),
-                        })
-                    })
-                    .catch((error) => {
-                        console.error("Error fetching similar products:", error);
-                    });
+                });
+                // alert backend that user doesn't have any compatible payment methods
+                fetch("http://127.0.0.1:8000/no_payment_methods/", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        country: "México",
+                        payment_method: namesBanks,
+                        original_url: window.location.href,
+                    }),
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log("NOTIFY: Response from backend:", data);
+                })
+                .catch((error) => {
+                    console.error("Error fetching similar products:", error);
                 });
                 
 
 
-                        // alert backend that user doesn't have any compatible payment methods
-                        fetch("http://127.0.0.1:8000/no_payment_methods/", {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
-                            body: JSON.stringify({
-                                country: "México",
-                                user_payment_methods: namesBanks,
-                                original_url: window.location.href,
-                            }),
-                        })
-                        .then((response) => response.json())
-                        .then((data) => {
-                            console.log("NOTIFY: Response from backend:", data);
-                        })
-                        .catch((error) => {
-                            console.error("Error fetching similar products:", error);
-                        });
         
                 // Exit early since there are no available methods
                 return;
+                });
             }
             
             let finalMethods = [];
@@ -212,7 +196,9 @@ chrome.storage.local.get(['banks'], (result) => {
                 .then(() => {
                     console.log("Final not available: ", not_available);
                     // open dialog of available payment methods
-                    openDialog(finalMethods, not_available);
+                    if(finalMethods.length !== 0){
+                        openDialog(finalMethods, not_available);
+                    }
                 }).catch((error) => {
                     console.error("Failed to process payment methods", error);
                 });

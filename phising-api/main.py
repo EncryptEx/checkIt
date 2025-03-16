@@ -69,7 +69,7 @@ def no_available_methods(request: Company):
         ref = ref_companies.child(request.company_name).child("payment_methods").child(c)
         ref.transaction(lambda x: x + 1 if x else 1)
 
-        ref = ref_companies.child(request.company_name).child("locations").child(request.country)
+        ref = ref_companies.child(request.company_name).child("locations").child(country)
         ref.transaction(lambda x: x + 1 if x else 1)
         
         ref = ref_companies.child(request.company_name).child("num_clients_insatisfied")
