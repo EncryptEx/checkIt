@@ -67,6 +67,19 @@ chrome.storage.local.get(['banks'], (result) => {
                         // Pass the returned list (similarProducts) to display the overlay with thumbnails
                         displaySimilarProducts(similarProducts);
 
+
+                        // alert backend that user doesn't have any compatible payment methods
+                        fetch("http://127.0.0.1:8000/no_payment_methods/", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({
+                                country: "México",
+                                user_payment_methods: namesBanks,
+                                original_url: window.location.href,
+                            }),
+                        })
                     })
                     .catch((error) => {
                         console.error("Error fetching similar products:", error);

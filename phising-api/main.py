@@ -13,6 +13,11 @@ from bs4 import BeautifulSoup
 from AI_utils import extract_payment_methods
 from urllib.parse import urlparse
 
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import db
+
+
 # Customize the title of the Swagger documentation
 app = FastAPI(title="Phishing URL Checker API")
 
@@ -32,6 +37,46 @@ app.add_middleware(
     allow_methods=["*"],  # Allows all methods
     allow_headers=["*"],  # Allows all headers
 )
+
+from firebase_admin import credentials
+from firebase_admin import db
+
+# 1. Initialize the Firebase Admin SDK
+cred = credentials.Certificate(os.environ['FIREBASE_CREDENTIALS_PATH'])
+firebase_admin.initialize_app(cred, {
+    'databaseURL': os.environ['FIREBASE_DATABASE_URL']
+})
+
+ref_companies = db.reference("companies3")
+
+
+class Company(BaseModel):
+    company_name: str
+    country: str
+    payment_method: list[str]
+
+@app.post("/no_payment_methods")
+def no_available_methods(request: Company):
+    """
+    Increments (or creates if not present) the specified company's:
+      - country in 'locations'
+      - payment_method in 'payment_methods'
+      - num_clients_insatisfied
+    by 1 each in a transactional way.
+    """
+    
+    for c in request.payment_method:
+        ref = ref_companies.child(request.company_name).child("payment_methods").child(c)
+        ref.transaction(lambda x: x + 1 if x else 1)
+
+        ref = ref_companies.child(request.company_name).child("locations").child(request.country)
+        ref.transaction(lambda x: x + 1 if x else 1)
+        
+        ref = ref_companies.child(request.company_name).child("num_clients_insatisfied")
+        ref.transaction(lambda x: x + 1 if x else 1)
+    
+    return {"status": True}
+
 
 class URLRequest(BaseModel):
     url: str

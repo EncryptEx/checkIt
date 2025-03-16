@@ -44,7 +44,6 @@ def extract_payment_methods(html_content, user_payment_methods):
 
 
 
-
     completion = client.chat.completions.create(
         model="GPT-4o-mini" ,
         temperature=0.2,
