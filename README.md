@@ -95,7 +95,10 @@ Although FlowiseAI was initially considered, the final implementation was carrie
 
 <br><br>
 
-### Screenshots:
+## Screenshots:
+
+<br>
+Chrome Extension anti-phishing and assistant:
 
 ![5 2](https://github.com/user-attachments/assets/d20d50ba-1366-49a8-9fb5-ca72a9416070)
 
@@ -107,6 +110,8 @@ Although FlowiseAI was initially considered, the final implementation was carrie
 
 ![8](https://github.com/user-attachments/assets/d2b59a49-7a7b-4794-a797-d0cb2be6796f)
 
+<br><br>
+Web for the companies in order to see clients:
 
 ![1](https://github.com/user-attachments/assets/82d566f2-aa4c-4e36-aac3-3e68d28c261c)
 
